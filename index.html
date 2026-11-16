@@ -5,16 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>汽車保險專屬規劃 - 徐婉甄小姐</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f7fa; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f7fa; margin: 0; padding: 15px; display: flex; justify-content: center; align-items: center; min-height: 100vh; box-sizing: border-box; }
         .card { background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); width: 100%; max-width: 400px; text-align: center; }
         h2 { color: #1a365d; margin-bottom: 10px; }
         p { color: #4a5568; font-size: 14px; margin-bottom: 20px; line-height: 1.5; }
         input { width: 100%; padding: 12px; font-size: 18px; text-align: center; border: 2px solid #e2e8f0; border-radius: 8px; margin-bottom: 15px; box-sizing: border-box; outline: none; }
         input:focus { border-color: #3182ce; }
-        button { width: 100%; padding: 12px; background: #3182ce; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; }
-        button:active { background: #2b6cb0; }
+        button-lock { width: 100%; padding: 12px; background: #3182ce; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; }
         .error { color: #e53e3e; font-size: 13px; margin-top: 10px; display: none; }
-        .content-box { display: none; width: 100%; max-width: 600px; background: white; padding: 25px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: left; }
+        
+        /* 互動式內容區塊樣式 */
+        .content-box { display: none; width: 100%; max-width: 600px; background: white; padding: 25px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: left; box-sizing: border-box; }
+        .header-box { background: linear-gradient(135deg, #2b6cb0, #3182ce); color: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; }
+        .header-box h2 { color: white; margin: 0 0 8px 0; font-size: 20px; }
+        .header-box p { color: #e2e8f0; margin: 4px 0; font-size: 14px; }
+        
+        /* 頁籤按鈕 */
+        .tabs { display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 2px solid #edf2f7; padding-bottom: 10px; }
+        .tab-btn { flex: 1; padding: 10px; background: #edf2f7; border: none; border-radius: 8px; font-size: 14px; font-weight: bold; color: #4a5568; cursor: pointer; transition: all 0.2s; }
+        .tab-btn.active { background: #3182ce; color: white; }
+        
+        /* 頁籤內容面板 */
+        .tab-pane { display: none; }
+        .tab-pane.active { display: block; }
+        
+        .section-title { font-size: 16px; font-weight: bold; color: #2d3748; margin: 15px 0 10px 0; border-left: 4px solid #3182ce; padding-left: 8px; }
+        .info-item { background: #f7fafc; padding: 12px 15px; border-radius: 8px; margin-bottom: 10px; font-size: 14px; color: #2d3748; display: flex; justify-content: space-between; align-items: center; }
+        .info-item span.label { color: #718096; }
+        .info-item span.val { font-weight: bold; color: #1a365d; }
+        
+        .footer-note { background: #ebf8ff; color: #2b6cb0; padding: 12px; border-radius: 8px; text-align: center; font-size: 13px; margin-top: 20px; font-weight: 500; }
+        .action-btn { display: block; width: 100%; padding: 12px; background: #3182ce; color: white; text-align: center; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; text-decoration: none; margin-top: 15px; box-sizing: border-box; }
     </style>
 </head>
 <body>
@@ -23,26 +44,75 @@
         <h2>🔒 專屬保險規劃</h2>
         <p>為保障個人隱私，請輸入車牌後 4 碼解鎖檢視</p>
         <input type="password" id="pwd" placeholder="請輸入 4 位數密碼" maxlength="4" inputmode="numeric">
-        <button onclick="checkPwd()">立即解鎖</button>
-        <div id="err" class="error">密碼錯誤，請重新輸入（預設為車牌後 4 碼）</div>
+        <button onclick="checkPwd()" style="width: 100%; padding: 12px; background: #3182ce; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer;">立即解鎖</button>
+        <div id="err" class="error">密碼錯誤，請輸入正確的車牌後 4 碼 (2752)</div>
     </div>
 
-    <!-- 解鎖後的保單內容 -->
+    <!-- 解鎖後的互動式保單內容 -->
     <div id="content" class="content-box">
-        <h2 style="color:#2b6cb0; border-bottom:2px solid #ebf8ff; padding-bottom:10px; margin-top:0;">🚗 汽車保險專屬規劃</h2>
-        <p><strong>被保險人：</strong>徐婉甄小姐</p>
-        <p><strong>車型：</strong>Toyota Corolla Cross Hybrid (車牌：BXB-2752)</p>
-        <p><strong>服務專員：</strong>陳姵彣 (南山產物)</p>
-        <hr style="border:0; border-top:1px solid #edf2f7; margin:15px 0;">
-        <h3 style="color:#2d3748; font-size:16px;">📋 保障內容摘要</h3>
-        <ul style="color:#4a5568; line-height:1.8; font-size:14px; padding-left:20px;">
-            <li>強制責任險 + 第三責任險</li>
-            <li>車體險（乙式）與竊盜損失險</li>
-            <li>乘客體傷責任險 & 駕駛人傷害險</li>
-        </ul>
-        <div style="background:#f7fafc; padding:15px; border-radius:8px; margin-top:20px; text-align:center; color:#718096; font-size:13px;">
-            南山產物保險專業服務 • 您的行車安全守護者
+        <div class="header-box">
+            <h2>🚗 汽車保險專屬規劃</h2>
+            <p><strong>被保險人：</strong> 徐婉甄小姐</p>
+            <p><strong>車型：</strong> Toyota Corolla Cross Hybrid (車牌：BXB-2752)</p>
+            <p><strong>服務專員：</strong> 陳姵彣 (南山產物)</p>
         </div>
+
+        <!-- 互動分頁按鈕 -->
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab(0)">📋 保障總覽</button>
+            <button class="tab-btn" onclick="switchTab(1)">🛡️ 險種明細</button>
+            <button class="tab-btn" onclick="switchTab(2)">💡 專屬叮嚀</button>
+        </div>
+
+        <!-- 分頁 1：保障總覽 -->
+        <div class="tab-pane active" id="pane-0">
+            <div class="section-title">核心保障摘要</div>
+            <div class="info-item">
+                <span class="label">強制責任險</span>
+                <span class="val">法定基本保障</span>
+            </div>
+            <div class="info-item">
+                <span class="label">第三人責任險</span>
+                <span class="val">人身 / 財損周全防護</span>
+            </div>
+            <div class="info-item">
+                <span class="label">車體險（乙式）</span>
+                <span class="val">涵蓋碰撞、傾覆與車對車事故</span>
+            </div>
+            <div class="info-item">
+                <span class="label">竊盜損失險</span>
+                <span class="val">失竊免煩惱</span>
+            </div>
+            <div class="info-item">
+                <span class="label">乘客與駕駛人傷害</span>
+                <span class="val">守護車內每位摯愛家人</span>
+            </div>
+        </div>
+
+        <!-- 分頁 2：險種明細 -->
+        <div class="tab-pane" id="pane-1">
+            <div class="section-title">安心守護細節</div>
+            <p style="color: #4a5568; font-size: 14px; line-height: 1.6;">
+                本專案針對 Toyota Corolla Cross Hybrid 車型量身打造，兼顧日常通勤與家庭出遊的高頻率用車需求，提供全方位的車體與第三人責任防護，讓您上路行車更加安心。
+            </p>
+            <ul style="color: #4a5568; font-size: 14px; line-height: 1.8; padding-left: 20px;">
+                <li><strong>車體險自負額：</strong> 零自負額，出險理賠更順暢。</li>
+                <li><strong>道路救援增額：</strong> 包含拖吊與急修服務，免除半路拋錨焦慮。</li>
+            </ul>
+        </div>
+
+        <!-- 分頁 3：專屬叮嚀 -->
+        <div class="tab-pane" id="pane-2">
+            <div class="section-title">貼心服務與諮詢</div>
+            <p style="color: #4a5568; font-size: 14px; line-height: 1.6;">
+                保單規劃不僅是買個安心，更是對家人與自己的負責。若對保障內容有任何調整想法或疑問，隨時歡迎與您的專屬服務專員聯繫。
+            </p>
+            <div class="footer-note">
+                南山產物保險專業服務 • 您的行車安全守護者
+            </div>
+        </div>
+
+        <a href="javascript:alert('感謝您的閱覽！如需進一步協助請隨時聯繫陳姵彣。');" class="action-btn">與專員聯繫 / 確認投保</a>
     </div>
 
     <script>
@@ -58,6 +128,22 @@
         document.getElementById('pwd').addEventListener('keypress', function (e) {
             if (e.key === 'Enter') { checkPwd(); }
         });
+
+        // 頁籤切換功能
+        function switchTab(index) {
+            const panes = document.querySelectorAll('.tab-pane');
+            const btns = document.querySelectorAll('.tab-btn');
+            
+            panes.forEach((pane, i) => {
+                if (i === index) {
+                    pane.classList.add('active');
+                    btns[i].classList.add('active');
+                } else {
+                    pane.classList.remove('active');
+                    btns[i].classList.remove('active');
+                }
+            });
+        }
     </script>
 </body>
 </html>
