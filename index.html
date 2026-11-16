@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>汽車保險專屬規劃 - 徐婉甄小姐</title>
+    <title>汽車保險專屬規劃與說明 - 徐婉甄小姐</title>
     <style>
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f7fa; margin: 0; padding: 15px; display: flex; justify-content: center; align-items: center; min-height: 100vh; box-sizing: border-box; }
         .card { background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); width: 100%; max-width: 400px; text-align: center; }
@@ -11,18 +11,17 @@
         p { color: #4a5568; font-size: 14px; margin-bottom: 20px; line-height: 1.5; }
         input { width: 100%; padding: 12px; font-size: 18px; text-align: center; border: 2px solid #e2e8f0; border-radius: 8px; margin-bottom: 15px; box-sizing: border-box; outline: none; }
         input:focus { border-color: #3182ce; }
-        button-lock { width: 100%; padding: 12px; background: #3182ce; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; }
         .error { color: #e53e3e; font-size: 13px; margin-top: 10px; display: none; }
         
         /* 互動式內容區塊樣式 */
-        .content-box { display: none; width: 100%; max-width: 600px; background: white; padding: 25px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: left; box-sizing: border-box; }
+        .content-box { display: none; width: 100%; max-width: 650px; background: white; padding: 25px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: left; box-sizing: border-box; }
         .header-box { background: linear-gradient(135deg, #2b6cb0, #3182ce); color: white; padding: 20px; border-radius: 12px; margin-bottom: 20px; }
         .header-box h2 { color: white; margin: 0 0 8px 0; font-size: 20px; }
         .header-box p { color: #e2e8f0; margin: 4px 0; font-size: 14px; }
         
         /* 頁籤按鈕 */
-        .tabs { display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 2px solid #edf2f7; padding-bottom: 10px; }
-        .tab-btn { flex: 1; padding: 10px; background: #edf2f7; border: none; border-radius: 8px; font-size: 14px; font-weight: bold; color: #4a5568; cursor: pointer; transition: all 0.2s; }
+        .tabs { display: flex; gap: 6px; margin-bottom: 20px; border-bottom: 2px solid #edf2f7; padding-bottom: 10px; overflow-x: auto; }
+        .tab-btn { flex: 1; padding: 10px 8px; background: #edf2f7; border: none; border-radius: 8px; font-size: 13px; font-weight: bold; color: #4a5568; cursor: pointer; white-space: nowrap; transition: all 0.2s; }
         .tab-btn.active { background: #3182ce; color: white; }
         
         /* 頁籤內容面板 */
@@ -30,10 +29,14 @@
         .tab-pane.active { display: block; }
         
         .section-title { font-size: 16px; font-weight: bold; color: #2d3748; margin: 15px 0 10px 0; border-left: 4px solid #3182ce; padding-left: 8px; }
-        .info-item { background: #f7fafc; padding: 12px 15px; border-radius: 8px; margin-bottom: 10px; font-size: 14px; color: #2d3748; display: flex; justify-content: space-between; align-items: center; }
-        .info-item span.label { color: #718096; }
-        .info-item span.val { font-weight: bold; color: #1a365d; }
+        .info-card { background: #f7fafc; padding: 15px; border-radius: 10px; margin-bottom: 15px; border: 1px solid #e2e8f0; }
+        .info-card h4 { margin: 0 0 8px 0; color: #2b6cb0; font-size: 15px; }
+        .info-card p { margin: 0; color: #4a5568; font-size: 13px; line-height: 1.6; }
         
+        .case-box { background: #fffaf0; border-left: 4px solid #dd6b20; padding: 15px; border-radius: 0 8px 8px 0; margin-bottom: 15px; }
+        .case-box h4 { margin: 0 0 5px 0; color: #c05621; font-size: 15px; }
+        .case-box p { margin: 0; color: #4a5568; font-size: 13px; line-height: 1.6; }
+
         .footer-note { background: #ebf8ff; color: #2b6cb0; padding: 12px; border-radius: 8px; text-align: center; font-size: 13px; margin-top: 20px; font-weight: 500; }
         .action-btn { display: block; width: 100%; padding: 12px; background: #3182ce; color: white; text-align: center; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; text-decoration: none; margin-top: 15px; box-sizing: border-box; }
     </style>
@@ -48,10 +51,10 @@
         <div id="err" class="error">密碼錯誤，請輸入正確的車牌後 4 碼 (2752)</div>
     </div>
 
-    <!-- 解鎖後的互動式保單內容 -->
+    <!-- 解鎖後的完整說明與案例網頁 -->
     <div id="content" class="content-box">
         <div class="header-box">
-            <h2>🚗 汽車保險專屬規劃</h2>
+            <h2>🚗 汽車保險專屬規劃與說明</h2>
             <p><strong>被保險人：</strong> 徐婉甄小姐</p>
             <p><strong>車型：</strong> Toyota Corolla Cross Hybrid (車牌：BXB-2752)</p>
             <p><strong>服務專員：</strong> 陳姵彣 (南山產物)</p>
@@ -59,60 +62,75 @@
 
         <!-- 互動分頁按鈕 -->
         <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab(0)">📋 保障總覽</button>
-            <button class="tab-btn" onclick="switchTab(1)">🛡️ 險種明細</button>
-            <button class="tab-btn" onclick="switchTab(2)">💡 專屬叮嚀</button>
+            <button class="tab-btn active" onclick="switchTab(0)">📋 建議書總覽</button>
+            <button class="tab-btn" onclick="switchTab(1)">💡 套用與條款說明</button>
+            <button class="tab-btn" onclick="switchTab(2)">🔍 實際理賠案例</button>
+            <button class="tab-btn" onclick="switchTab(3)">⭐ 專屬叮嚀</button>
         </div>
 
-        <!-- 分頁 1：保障總覽 -->
+        <!-- 分頁 0：建議書總覽 -->
         <div class="tab-pane active" id="pane-0">
-            <div class="section-title">核心保障摘要</div>
-            <div class="info-item">
-                <span class="label">強制責任險</span>
-                <span class="val">法定基本保障</span>
+            <div class="section-title">核心保障架構</div>
+            <div class="info-card">
+                <h4>1. 強制汽車責任保險</h4>
+                <p>政府規定必備基本盤，提供事故受害人基本的醫療與失能/死亡給付。</p>
             </div>
-            <div class="info-item">
-                <span class="label">第三人責任險</span>
-                <span class="val">人身 / 財損周全防護</span>
+            <div class="info-card">
+                <h4>2. 第三人責任險（人身 / 財損）</h4>
+                <p>當發生交通事故波及他人車輛或路人時，填補強制險不足之龐大賠償責任。</p>
             </div>
-            <div class="info-item">
-                <span class="label">車體險（乙式）</span>
-                <span class="val">涵蓋碰撞、傾覆與車對車事故</span>
+            <div class="info-card">
+                <h4>3. 車體險（乙式）與竊盜損失險</h4>
+                <p>針對您的 Corolla Cross 提供車對車碰撞、傾覆及失竊時的完善修繕與理賠保障。</p>
             </div>
-            <div class="info-item">
-                <span class="label">竊盜損失險</span>
-                <span class="val">失竊免煩惱</span>
-            </div>
-            <div class="info-item">
-                <span class="label">乘客與駕駛人傷害</span>
-                <span class="val">守護車內每位摯愛家人</span>
+            <div class="info-card">
+                <h4>4. 乘客與駕駛人傷害險</h4>
+                <p>全方位守護車內摯愛家人與駕駛自身的安全，行車更安心。</p>
             </div>
         </div>
 
-        <!-- 分頁 2：險種明細 -->
+        <!-- 分頁 1：建議書套用說明 -->
         <div class="tab-pane" id="pane-1">
-            <div class="section-title">安心守護細節</div>
-            <p style="color: #4a5568; font-size: 14px; line-height: 1.6;">
-                本專案針對 Toyota Corolla Cross Hybrid 車型量身打造，兼顧日常通勤與家庭出遊的高頻率用車需求，提供全方位的車體與第三人責任防護，讓您上路行車更加安心。
-            </p>
-            <ul style="color: #4a5568; font-size: 14px; line-height: 1.8; padding-left: 20px;">
-                <li><strong>車體險自負額：</strong> 零自負額，出險理賠更順暢。</li>
-                <li><strong>道路救援增額：</strong> 包含拖吊與急修服務，免除半路拋錨焦慮。</li>
-            </ul>
+            <div class="section-title">為什麼這樣為您規劃？（建議書套用解析）</div>
+            <div class="info-card">
+                <h4>🎯 針對用車特性量身打造</h4>
+                <p>考量您駕駛 Toyota Corolla Cross Hybrid 在都會與日常通勤的高頻率環境，此份建議書特別強化了<strong>「第三人責任險高額保障」</strong>與<strong>「乙式車體險」</strong>。 Hybrid 車款零件精密（如電池與雷達感測器），萬一發生碰撞，原廠維修費用較高，乙式車體險能讓您完全免除大筆修車費用的負擔。</p>
+            </div>
+            <div class="info-card">
+                <h4>🛡️ 駕駛與乘客雙效防護</h4>
+                <p>許多車主常忽略「如果自己或家人受傷」的醫療缺口。本規劃特別附加了駕駛人傷害險與乘客險，讓車內每個人都享有獨立的醫療與意外防護網。</p>
+            </div>
+        </div>
+
+        <!-- 分頁 2：實際理賠案例 -->
+        <div class="tab-pane" id="pane-2">
+            <div class="section-title">情境模擬與理賠案例分享</div>
+            <div class="case-box">
+                <h4>📌 案例情境：路口轉彎擦撞高價進口車</h4>
+                <p><strong>發生經過：</strong> 王小姐（化名）在市區行駛時不小心與一台進口百萬名車發生擦撞，對方車尾受損嚴重，維修費高達 18 萬元，同時自己的車頭保險桿與感知器也受損（估價 4.5 萬元）。</p>
+            </div>
+            <div class="info-card">
+                <h4>💡 本建議書如何幫您解決？</h4>
+                <p>
+                1. <strong>對方車損：</strong> 由您規劃的<strong>「第三人責任險-財損」</strong>全額理賠 18 萬元，免除您自掏腰包賠償的巨大壓力。<br>
+                2. <strong>自己的愛車：</strong> 由<strong>「車體險（乙式）」</strong>直接支付 4.5 萬元原廠修繕費用。<br>
+                3. <strong>總結：</strong> 原本可能高達 22.5 萬元的意外支出，透過完善的保單規劃，讓您在事故發生時能獲得最安心的財務後盾！
+                </p>
+            </div>
         </div>
 
         <!-- 分頁 3：專屬叮嚀 -->
-        <div class="tab-pane" id="pane-2">
-            <div class="section-title">貼心服務與諮詢</div>
+        <div class="tab-pane" id="pane-3">
+            <div class="section-title">貼心服務與專業承諾</div>
             <p style="color: #4a5568; font-size: 14px; line-height: 1.6;">
-                保單規劃不僅是買個安心，更是對家人與自己的負責。若對保障內容有任何調整想法或疑問，隨時歡迎與您的專屬服務專員聯繫。
+                保單不只是契約，更是一份對家人與自己的責任承諾。南山產物提供您最即時、專業的理賠協助與售後服務。若對內容有任何想調整或討論的地方，隨時歡迎與我聯繫！
             </p>
             <div class="footer-note">
                 南山產物保險專業服務 • 您的行車安全守護者
             </div>
         </div>
 
-        <a href="javascript:alert('感謝您的閱覽！如需進一步協助請隨時聯繫陳姵彣。');" class="action-btn">與專員聯繫 / 確認投保</a>
+        <a href="javascript:alert('感謝您的閱覽！如需進一步調整保額或確認投保，請隨時與專員陳姵彣聯繫。');" class="action-btn">與專員聯繫 / 確認投保內容</a>
     </div>
 
     <script>
