@@ -1,195 +1,61 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>南山產物汽車保險規劃書 — 徐婉甄小姐 (保密驗證)</title>
-<style>
-  :root {
-    --primary: #0f4c81;
-    --primary-light: #e8f1f8;
-    --accent: #d97706;
-    --bg: #f4f7f9;
-    --card-bg: #ffffff;
-    --text-main: #1f2937;
-    --text-muted: #6b7280;
-    --border: #e5e7eb;
-  }
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
-  }
-  body {
-    background-color: var(--bg);
-    color: var(--text-main);
-    line-height: 1.6;
-    padding-bottom: 40px;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汽車保險專屬規劃 - 徐婉甄小姐</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f7fa; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; box-sizing: border-box; }
+        .card { background: white; padding: 30px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); width: 100%; max-width: 400px; text-align: center; }
+        h2 { color: #1a365d; margin-bottom: 10px; }
+        p { color: #4a5568; font-size: 14px; margin-bottom: 20px; line-height: 1.5; }
+        input { width: 100%; padding: 12px; font-size: 18px; text-align: center; border: 2px solid #e2e8f0; border-radius: 8px; margin-bottom: 15px; box-sizing: border-box; outline: none; }
+        input:focus { border-color: #3182ce; }
+        button { width: 100%; padding: 12px; background: #3182ce; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; }
+        button:active { background: #2b6cb0; }
+        .error { color: #e53e3e; font-size: 13px; margin-top: 10px; display: none; }
+        .content-box { display: none; width: 100%; max-width: 600px; background: white; padding: 25px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); text-align: left; }
+    </style>
+</head>
+<body>
+    <div id="lock-screen" class="card">
+        <h2>🔒 專屬保險規劃</h2>
+        <p>為保障個人隱私，請輸入車牌後 4 碼解鎖檢視</p>
+        <input type="password" id="pwd" placeholder="請輸入 4 位數密碼" maxlength="4" inputmode="numeric">
+        <button onclick="checkPwd()">立即解鎖</button>
+        <div id="err" class="error">密碼錯誤，請重新輸入（預設為車牌後 4 碼）</div>
+    </div>
 
-  /* Lock Screen Styles */
-  .lock-overlay {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(135deg, #0f4c81 0%, #1d6fa5 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    z-index: 9999;
-  }
-  .lock-card {
-    background: white;
-    width: 100%;
-    max-width: 400px;
-    border-radius: 24px;
-    padding: 32px 24px;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
-    text-align: center;
-  }
-  .lock-icon {
-    font-size: 48px;
-    margin-bottom: 16px;
-  }
-  .lock-title {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--primary);
-    margin-bottom: 8px;
-  }
-  .lock-subtitle {
-    font-size: 14px;
-    color: var(--text-muted);
-    margin-bottom: 24px;
-  }
-  .lock-input {
-    width: 100%;
-    padding: 14px;
-    font-size: 18px;
-    text-align: center;
-    border: 2px solid var(--border);
-    border-radius: 12px;
-    outline: none;
-    transition: border-color 0.2s;
-    letter-spacing: 4px;
-    margin-bottom: 12px;
-  }
-  .lock-input:focus {
-    border-color: var(--primary);
-  }
-  .lock-btn {
-    width: 100%;
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 14px;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  .lock-btn:hover {
-    background: #0b3860;
-  }
-  .lock-error {
-    color: #dc2626;
-    font-size: 13px;
-    margin-top: 10px;
-    display: none;
-  }
-  .lock-hint {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-top: 16px;
-  }
+    <div id="content" class="content-box">
+        <h2 style="color:#2b6cb0; border-bottom:2px solid #ebf8ff; padding-bottom:10px; margin-top:0;">🚗 汽車保險專屬規劃</h2>
+        <p><strong>被保險人：</strong>徐婉甄小姐</p>
+        <p><strong>車型：</strong>Toyota Corolla Cross Hybrid (車牌：BXB-2752)</p>
+        <p><strong>服務專員：</strong>陳姵彣 (南山產物)</p>
+        <hr style="border:0; border-top:1px solid #edf2f7; margin:15px 0;">
+        <h3 style="color:#2d3748; font-size:16px;">📋 保障內容摘要</h3>
+        <ul style="color:#4a5568; line-height:1.8; font-size:14px; padding-left:20px;">
+            <li>強制責任險 + 第三責任險</li>
+            <li>車體險（乙式）與竊盜損失險</li>
+            <li>乘客體傷責任險 & 駕駛人傷害險</li>
+        </ul>
+        <div style="background:#f7fafc; padding:15px; border-radius:8px; margin-top:20px; text-align:center; color:#718096; font-size:13px;">
+            南山產物保險專業服務 • 您的行車安全守護者
+        </div>
+    </div>
 
-  /* Main Content Wrapper (Hidden until unlocked) */
-  #mainContent {
-    display: none;
-  }
-
-  header {
-    background: linear-gradient(135deg, #0f4c81 0%, #1d6fa5 100%);
-    color: white;
-    padding: 24px 20px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    box-shadow: 0 4px 12px rgba(15, 76, 129, 0.15);
-  }
-  .header-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-  .brand-badge {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-  }
-  .advisor-info {
-    font-size: 13px;
-    opacity: 0.9;
-  }
-  header h1 {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 4px;
-  }
-  header p {
-    font-size: 14px;
-    opacity: 0.85;
-  }
-  .container {
-    max-width: 820px;
-    margin: 0 auto;
-    padding: 0 16px;
-  }
-  .summary-card {
-    background: var(--card-bg);
-    border-radius: 16px;
-    padding: 18px;
-    margin-top: -16px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    border: 1px solid var(--border);
-  }
-  @media (min-width: 640px) {
-    .summary-card {
-      grid-template-columns: repeat(4, 1fr);
-    }
-  }
-  .stat-box {
-    background: var(--bg);
-    padding: 10px 12px;
-    border-radius: 10px;
-  }
-  .stat-label {
-    font-size: 12px;
-    color: var(--text-muted);
-  }
-  .stat-value {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--primary);
-    margin-top: 2px;
-  }
-  .stat-value.highlight {
-    color: var(--accent);
-    font-size: 17px;
-  }
-  .guide-tip {
-    margin: 18px 0 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-    color: var(--primary);
-    font-weight: 600;
+    <script>
+        function checkPwd() {
+            const val = document.getElementById('pwd').value;
+            if (val === '2752') {
+                document.getElementById('lock-screen').style.display = 'none';
+                document.getElementById('content').style.display = 'block';
+            } else {
+                document.getElementById('err').style.display = 'block';
+            }
+        }
+        document.getElementById('pwd').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') { checkPwd(); }
+        });
+    </script>
+</body>
+</html>
