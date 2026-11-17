@@ -11,101 +11,79 @@
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen">
-
-    <!-- 密碼解鎖遮罩層 -->
-    <div id="lockScreen" class="fixed inset-0 z-50 bg-slate-900/90 backdrop-blur-md flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 text-center border border-slate-100">
-            <div class="w-16 h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 text-2xl">
-                🔒
-            </div>
-            <h2 class="text-2xl font-bold text-slate-900 mb-2">保單專屬加密</h2>
-            <p class="text-slate-500 text-sm mb-6">為了保護客戶隱私，請輸入車牌後四碼（提示：2752）以解鎖檢視詳細保單內容。</p>
-            
-            <div class="space-y-4">
-                <input type="password" id="pinInput" maxlength="4" placeholder="請輸入車牌後四碼" class="w-full px-4 py-3 text-center text-2xl tracking-widest border border-slate-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                <div id="errorMsg" class="text-rose-500 text-xs hidden">密碼錯誤，請重新輸入（預設為 2752）</div>
-                <button type="button" onclick="checkPin()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-xl transition shadow-lg shadow-blue-500/25 cursor-pointer">
-                    立即解鎖
-                </button>
-            </div>
-            <p class="text-xs text-slate-400 mt-6">車型：2024/12 Corolla Cross Hybrid 尊爵</p>
-        </div>
-    </div>
-
-    <!-- 主內容區 (解鎖後顯示) -->
-    <div id="mainContent" class="opacity-0 transition-opacity duration-500 pointer-events-none">
         
-        <!-- 頂部導航 -->
-        <header class="bg-slate-900 text-white sticky top-0 z-30 shadow-md">
-            <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
-                <div class="flex items-center gap-3">
-                    <div class="bg-blue-600 text-white p-2 rounded-xl font-bold">南山產物</div>
-                    <div>
-                        <h1 class="font-bold text-lg">專屬車險規劃顧問</h1>
-                        <p class="text-xs text-slate-400">車主：徐○甄 | 車型：Corolla Cross Hybrid 尊爵 (車牌：BXB-████)</p>
-                    </div>
+    <!-- 頂部導航 -->
+    <header class="bg-slate-900 text-white sticky top-0 z-30 shadow-md">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-blue-600 text-white p-2 rounded-xl font-bold">南山產物</div>
+                <div>
+                    <h1 class="font-bold text-lg">專屬車險規劃顧問</h1>
+                    <p class="text-xs text-slate-400">車主：徐○甄 | 車型：Corolla Cross Hybrid 尊爵 (車牌：BXB-████)</p>
                 </div>
-                <!-- 頁籤導航 -->
-                <nav class="flex bg-slate-800 p-1 rounded-xl text-sm font-medium">
-                    <button onclick="switchTab('compare')" id="tab-compare" class="px-4 py-2 rounded-lg bg-blue-600 text-white transition cursor-pointer">方案比較</button>
-                    <button onclick="switchTab('simulator')" id="tab-simulator" class="px-4 py-2 rounded-lg text-slate-300 hover:text-white transition cursor-pointer">理賠模擬</button>
-                    <button onclick="switchTab('analysis')" id="tab-analysis" class="px-4 py-2 rounded-lg text-slate-300 hover:text-white transition cursor-pointer">保障解析</button>
-                    <button onclick="switchTab('quiz')" id="tab-quiz" class="px-4 py-2 rounded-lg text-slate-300 hover:text-white transition cursor-pointer">30秒選案</button>
-                </nav>
             </div>
-        </header>
+            <!-- 頁籤導航 -->
+            <nav class="flex bg-slate-800 p-1 rounded-xl text-sm font-medium">
+                <button onclick="switchTab('compare')" id="tab-compare" class="px-4 py-2 rounded-lg bg-blue-600 text-white transition cursor-pointer">方案比較</button>
+                <button onclick="switchTab('simulator')" id="tab-simulator" class="px-4 py-2 rounded-lg text-slate-300 hover:text-white transition cursor-pointer">理賠模擬</button>
+                <button onclick="switchTab('analysis')" id="tab-analysis" class="px-4 py-2 rounded-lg text-slate-300 hover:text-white transition cursor-pointer">保障解析</button>
+                <button onclick="switchTab('quiz')" id="tab-quiz" class="px-4 py-2 rounded-lg text-slate-300 hover:text-white transition cursor-pointer">30秒選案</button>
+            </nav>
+        </div>
+    </header>
 
-        <main class="max-w-7xl mx-auto px-4 py-8">
-            
-            <!-- 區塊一：方案比較 -->
-            <section id="section-compare" class="space-y-6">
-                <div class="text-center max-w-2xl mx-auto mb-8">
-                    <h2 class="text-3xl font-bold text-slate-900 mb-3">車體險方案雙效對比</h2>
-                    <p class="text-slate-600">兩方案皆享有同等級的 1,000 萬超額責任與完整防護網，唯一的差別在於「是否保障自撞」以及總保費差額 <span class="font-bold text-blue-600">NT$ 10,184</span>。</p>
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        
+        <!-- 區塊一：方案比較 -->
+        <section id="section-compare" class="space-y-6">
+            <div class="text-center max-w-2xl mx-auto mb-8">
+                <h2 class="text-3xl font-bold text-slate-900 mb-3">車體險方案雙效對比</h2>
+                <p class="text-slate-600">兩方案皆享有同等級的 1,000 萬超額責任與完整防護網，唯一的差別在於「是否保障自撞」以及總保費差額 <span class="font-bold text-blue-600">NT$ 10,184</span>。</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 items-stretch">
+                <!-- 方案一：乙式 -->
+                <div class="bg-white rounded-2xl shadow-xl border-2 border-blue-500 p-6 relative flex flex-col justify-between">
+                    <div class="absolute -top-3.5 right-6 bg-blue-600 text-white text-xs px-3 py-1 rounded-full font-bold shadow">
+                        方案一・全方位守護
+                    </div>
+                    <div>
+                        <div class="mb-4">
+                            <span class="text-xs font-semibold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-md">含車對車 ＋ 自撞/單一事故</span>
+                            <h3 class="text-2xl font-bold text-slate-900 mt-2">乙式車體險全防護</h3>
+                            <p class="text-sm text-slate-500 mt-1">適合路邊停車、新手上路或希望愛車大小擦撞皆有保障的車主</p>
+                        </div>
+
+                        <div class="bg-slate-50 rounded-xl p-4 mb-6">
+                            <div class="text-xs text-slate-500">一年期總保費</div>
+                            <div class="text-3xl font-black text-blue-600 my-1">NT$ 27,908</div>
+                            <div class="text-xs text-slate-500 flex justify-between border-t border-slate-200 pt-2 mt-2">
+                                <span>強制險：$1,019</span>
+                                <span>任意險：$26,889 (車體險佔 $18,150)</span>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-3 text-sm text-slate-700 mb-6">
+                            <li class="flex items-start gap-2">
+                                <span class="text-emerald-500 font-bold">✔</span>
+                                <div><strong>車對車碰撞 (無自負額)</strong>：與他車發生擦撞，免自負額全額修復。</div>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-emerald-500 font-bold">✔</span>
+                                <div><strong>自撞與單一事故</strong>：包含自己倒車撞柱、擦撞花台、護欄等。（註：若為停放中遭不明車輛刮損且找不到肇事者，依條款屬不保事項）</div>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span class="text-emerald-500 font-bold">✔</span>
+                                <div><strong>完整責任與救援網</strong>：1,000萬超額 + 300萬/600萬/100萬第三人 + 乘客/駕駛險 + 道路救援。</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="border-t border-slate-100 pt-4 flex justify-between items-center text-xs text-slate-400">
+                        <span>代號：05 乙式 + 96 15%折舊附加</span>
+                        <span class="font-semibold text-slate-700">無自負額</span>
+                    </div>
                 </div>
 
-                <div class="grid md:grid-cols-2 gap-6 items-stretch">
-                    <!-- 方案一：乙式 -->
-                    <div class="bg-white rounded-2xl shadow-xl border-2 border-blue-500 p-6 relative flex flex-col justify-between">
-                        <div class="absolute -top-3.5 right-6 bg-blue-600 text-white text-xs px-3 py-1 rounded-full font-bold shadow">
-                            方案一・全方位守護
-                        </div>
-                        <div>
-                            <div class="mb-4">
-                                <span class="text-xs font-semibold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-md">含車對車 ＋ 自撞/單一事故</span>
-                                <h3 class="text-2xl font-bold text-slate-900 mt-2">乙式車體險全防護</h3>
-                                <p class="text-sm text-slate-500 mt-1">適合路邊停車、新手上路或希望愛車大小擦撞皆有保障的車主</p>
-                            </div>
-
-                            <div class="bg-slate-50 rounded-xl p-4 mb-6">
-                                <div class="text-xs text-slate-500">一年期總保費</div>
-                                <div class="text-3xl font-black text-blue-600 my-1">NT$ 27,908</div>
-                                <div class="text-xs text-slate-500 flex justify-between border-t border-slate-200 pt-2 mt-2">
-                                    <span>強制險：$1,019</span>
-                                    <span>任意險：$26,889 (車體險佔 $18,150)</span>
-                                </div>
-                            </div>
-
-                            <ul class="space-y-3 text-sm text-slate-700 mb-6">
-                                <li class="flex items-start gap-2">
-                                    <span class="text-emerald-500 font-bold">✔</span>
-                                    <div><strong>車對車碰撞 (無自負額)</strong>：與他車發生擦撞，免自負額全額修復。</div>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <span class="text-emerald-500 font-bold">✔</span>
-                                    <div><strong>自撞與單一事故</strong>：包含自己倒車撞柱、擦撞花台、護欄等。（註：若為停放中遭不明車輛刮損且找不到肇事者，依條款屬不保事項）</div>
-                                </li>
-                                <li class="flex items-start gap-2">
-                                    <span class="text-emerald-500 font-bold">✔</span>
-                                    <div><strong>完整責任與救援網</strong>：1,000萬超額 + 300萬/600萬/100萬第三人 + 乘客/駕駛險 + 道路救援。</div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="border-t border-slate-100 pt-4 flex justify-between items-center text-xs text-slate-400">
-                            <span>代號：05 乙式 + 96 15%折舊附加</span>
-                            <span class="font-semibold text-slate-700">無自負額</span>
-                        </div>
-                    </div>
-
-                    <!-- 方案二：丙式 -->
-                    <div class="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 relative flex flex-col justify-between">
+                <!-- 方案二：丙式 -->
+                <div class="bg-white rounded-2xl shadow-xl border border-slate-200 p-6 relative flex flex-col justify-between">
+                    <div class="absolute -top-3.5 right-6 bg-slate-700 text-white text-xs px
