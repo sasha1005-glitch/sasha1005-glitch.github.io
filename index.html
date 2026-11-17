@@ -57,10 +57,12 @@
     <!-- 密碼保護遮罩層 -->
     <div id="password-modal" class="fixed inset-0 z-50 bg-slate-900/90 backdrop-blur-md flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 text-center border border-slate-100 fade-in">
+            <!-- 加上了精美圖標與標題，改善上方突兀感 -->
             <div class="w-14 h-14 rounded-2xl bg-brand-light text-brand-navy flex items-center justify-center mx-auto mb-4 shadow-sm">
-                <i data-lucide="lock" class="w-7 h-7"></i>
+                <i data-lucide="shield-check" class="w-7 h-7"></i>
             </div>
-            <h2 class="text-xl font-bold text-slate-900 mb-2">請輸入存取密碼</h2>
+            <h1 class="text-xl font-bold text-slate-900 mb-1">車險規劃建議書</h1>
+            <p class="text-xs font-medium text-brand-blue tracking-wide mb-3">Corolla Cross Hybrid 尊爵版</p>
             <p class="text-sm text-slate-500 mb-6">本建議書包含專屬保險規劃內容，請輸入密碼以解鎖檢視。</p>
             
             <form onsubmit="verifyPassword(event)" class="space-y-4">
@@ -69,7 +71,7 @@
                         class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent text-center tracking-widest text-lg font-medium">
                 </div>
                 <div id="error-msg" class="text-xs text-rose-500 hidden font-medium">密碼錯誤，請重新輸入</div>
-                <button type="submit" class="w-full bg-brand-navy hover:bg-brand-blue text-white font-bold py-3 px-6 rounded-xl transition shadow-md">
+                <button type="submit" class="w-full bg-brand-navy hover:bg-brand-blue text-white font-bold py-3 px-6 rounded-xl transition shadow-md cursor-pointer">
                     解鎖進入
                 </button>
             </form>
@@ -443,7 +445,7 @@
     <script>
         lucide.createIcons();
 
-        // 密碼驗證邏輯（請在此修改您的解鎖密碼，例如改成您的手機後四碼）
+        // 密碼驗證邏輯（請在此修改您的解鎖密碼）
         const CORRECT_PASSWORD = "1234"; 
 
         function verifyPassword(event) {
@@ -507,4 +509,354 @@
                 title: "案例 1：賣場或路邊停車遭不明車輛刮撞（肇事逃逸）",
                 badge: "依保單條款：乙、丙式皆屬不保事項",
                 badgeColor: "bg-rose-100 text-rose-800",
-                story: "週末去大賣場購物，取車時發現後保桿與葉子板被撞凹一大塊，但周邊監視器剛好死角拍不到車牌，找不到肇事車主。回原廠估價烤漆加
+                story: "週末去大賣場購物，取車時發現後保桿與葉子板被撞凹一大塊，但周邊監視器剛好死角拍不到車牌，找不到肇事車主。回原廠估價烤漆加鈑金維修費為 40,000 元。",
+                repairCost: "NT$ 40,000",
+                planA: {
+                    status: "不予理賠（依保單條款第四條）",
+                    statusClass: "bg-rose-100 text-rose-800",
+                    insurerPays: "NT$ 0",
+                    clientPays: "NT$ 40,000（全額自付）",
+                    note: "注意：依南山車體險條款，停放中遭不明車輛碰撞或刮損且無法確認對象者，屬不保事項。乙式與丙式在此情況下皆不賠。"
+                },
+                planB: {
+                    status: "不予理賠",
+                    statusClass: "bg-rose-100 text-rose-800",
+                    insurerPays: "NT$ 0",
+                    clientPays: "NT$ 40,000（全額自付）",
+                    note: "丙式僅承保「車對車碰撞」，停放中遭不明刮損或找不到對方車主時，同樣不予理賠。"
+                }
+            },
+            {
+                title: "案例 2：地下室倒車不慎自撞柱子或擦撞護欄",
+                badge: "乙式車體險核心優勢",
+                badgeColor: "bg-amber-100 text-amber-800",
+                story: "在狹窄的地下停車場轉彎時視線死角，右側車門不慎擦撞到水泥柱，導致車門嚴重變形需更換門板與烤漆，原廠維修費用為 50,000 元。",
+                repairCost: "NT$ 50,000",
+                planA: {
+                    status: "全額理賠",
+                    statusClass: "bg-teal-100 text-teal-800",
+                    insurerPays: "NT$ 50,000",
+                    clientPays: "NT$ 0（無自負額）",
+                    note: "乙式包含「碰撞、傾覆」等單一事故，自己不小心撞到牆壁、柱子或護欄，皆由保險公司買單。"
+                },
+                planB: {
+                    status: "不予理賠",
+                    statusClass: "bg-rose-100 text-rose-800",
+                    insurerPays: "NT$ 0",
+                    clientPays: "NT$ 50,000（全額自付）",
+                    note: "丙式不保障非車碰車之單一自撞事故，5 萬元維修費須由車主自掏腰包。"
+                }
+            },
+            {
+                title: "案例 3：市區路口變換車道與他車發生擦撞",
+                badge: "兩方案皆有保障",
+                badgeColor: "bg-blue-100 text-brand-navy",
+                story: "在市區路口變換車道時與旁車發生碰撞（假設我方肇責 70%、對方 30%），我方愛車維修費 60,000 元，對方車輛維修費 30,000 元。",
+                repairCost: "我方 6 萬 / 對方 3 萬",
+                planA: {
+                    status: "全額修復＋代位求償",
+                    statusClass: "bg-teal-100 text-teal-800",
+                    insurerPays: "我方 6 萬全修 ＋ 賠對方 2.1 萬",
+                    clientPays: "NT$ 0",
+                    note: "乙式先幫您把車修好（再向對方保險公司追償 30% 肇責）；對方修車費由我方第三人財損險依肇責賠付。"
+                },
+                planB: {
+                    status: "全額修復＋代位求償",
+                    statusClass: "bg-teal-100 text-teal-800",
+                    insurerPays: "我方 6 萬全修 ＋ 賠對方 2.1 萬",
+                    clientPays: "NT$ 0",
+                    note: "因為是明確的「車對車碰撞」，丙式免自負額與乙式享有完全相同的理賠與代位求償服務！"
+                }
+            },
+            {
+                title: "案例 4：高速公路未保持安全距離，追撞名貴超跑",
+                badge: "超額責任險神救援",
+                badgeColor: "bg-purple-100 text-purple-800",
+                story: "雨天視線不佳，不慎追撞前方進口名貴超跑，經原廠鑑定對方車尾碳纖維套件與排氣系統受損，判賠修車費高達 205 萬元！",
+                repairCost: "對方求償 NT$ 2,050,000",
+                planA: {
+                    status: "1,000萬超額險全數買單",
+                    statusClass: "bg-teal-100 text-teal-800",
+                    insurerPays: "財損 100萬 ＋ 超額險 105萬",
+                    clientPays: "NT$ 0（守住家庭資產）",
+                    note: "先用「第三人財損 100 萬」理賠，不足的 105 萬立刻啟動「超額責任險（保額 1,000 萬）」全額補足！"
+                },
+                planB: {
+                    status: "1,000萬超額險全數買單",
+                    statusClass: "bg-teal-100 text-teal-800",
+                    insurerPays: "財損 100萬 ＋ 超額險 105萬",
+                    clientPays: "NT$ 0（守住家庭資產）",
+                    note: "方案二同樣具備 1,000 萬超額責任險！若沒保超額險，車主需自己拿 105 萬現金出來賠。"
+                }
+            },
+            {
+                title: "案例 5：車禍導致對方騎士骨折住院，並提告過失傷害",
+                badge: "律師費＋慰問金全支援",
+                badgeColor: "bg-indigo-100 text-indigo-800",
+                story: "轉彎時不慎與機車發生擦撞，對方騎士腿部骨折住院 5 天，要求賠償醫藥費、薪資損失及精神慰撫金共 65 萬元，且因和解前先行提告「刑事過失傷害」。",
+                repairCost: "體傷求償 65 萬 ＋ 訴訟風險",
+                planA: {
+                    status: "全方位理賠與訴訟支援",
+                    statusClass: "bg-teal-100 text-teal-800",
+                    insurerPays: "強制險＋第三人體傷＋慰問金＋律師費",
+                    clientPays: "NT$ 0",
+                    note: "①強制險與第三人體傷險賠付 65 萬；②啟動「代碼 9B 慰問金」補助探病紅包 5,000 元；③啟動「代碼 91」支付最高 10 萬刑事律師費。"
+                },
+                planB: {
+                    status: "全方位理賠與訴訟支援",
+                    statusClass: "bg-teal-100 text-teal-800",
+                    insurerPays: "強制險＋第三人體傷＋慰問金＋律師費",
+                    clientPays: "NT$ 0",
+                    note: "兩方案在責任險、慰問金與刑事律師費補償上完全相同，讓您在面對訴訟壓力時有專業後盾。"
+                }
+            }
+        ];
+
+        function selectScenario(index) {
+            const btns = document.querySelectorAll('.scenario-btn');
+            btns.forEach((btn, i) => {
+                if (i === index) {
+                    btn.className = "scenario-btn active shrink-0 px-4 py-3 rounded-2xl border text-left transition flex items-center gap-2.5 bg-brand-navy text-white border-brand-navy shadow-sm cursor-pointer";
+                } else {
+                    btn.className = "scenario-btn shrink-0 px-4 py-3 rounded-2xl border text-left transition flex items-center gap-2.5 bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100 cursor-pointer";
+                }
+            });
+
+            const s = scenarios[index];
+            const display = document.getElementById('scenario-display');
+            display.classList.remove('fade-in');
+            void display.offsetWidth;
+            display.classList.add('fade-in');
+
+            display.innerHTML = `
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                    <span class="px-3 py-1 rounded-full text-xs font-bold ${s.badgeColor}">${s.badge}</span>
+                    <span class="text-xs sm:text-sm font-bold text-slate-500">事故損失規模：<strong class="text-slate-800">${s.repairCost}</strong></span>
+                </div>
+                <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-2">${s.title}</h3>
+                <p class="text-sm text-slate-600 leading-relaxed bg-white p-4 rounded-xl border border-slate-200/70 mb-6">
+                    <strong class="text-brand-navy">情境描述：</strong>${s.story}
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-white rounded-xl border-2 border-brand-blue/30 p-5 shadow-sm">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="font-bold text-brand-navy text-sm sm:text-base">方案一：乙式車體險 ($27,908)</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-bold ${s.planA.statusClass}">${s.planA.status}</span>
+                        </div>
+                        <div class="space-y-2 text-sm border-y border-slate-100 py-3 my-3">
+                            <div class="flex justify-between">
+                                <span class="text-slate-500">保險公司理賠：</span>
+                                <span class="font-bold ${s.planA.insurerPays === 'NT$ 0' ? 'text-rose-600' : 'text-teal-700'}">${s.planA.insurerPays}</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-500">車主自付金額：</span>
+                                <span class="font-bold ${s.planA.clientPays.includes('全額自付') ? 'text-rose-600' : 'text-slate-900'}">${s.planA.clientPays}</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">${s.planA.note}</p>
+                    </div>
+
+                    <div class="bg-white rounded-xl border-2 border-teal-600/30 p-5 shadow-sm">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="font-bold text-teal-800 text-sm sm:text-base">方案二：丙式免自負額 ($17,724)</span>
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-bold ${s.planB.statusClass}">${s.planB.status}</span>
+                        </div>
+                        <div class="space-y-2 text-sm border-y border-slate-100 py-3 my-3">
+                            <div class="flex justify-between">
+                                <span class="text-slate-500">保險公司理賠：</span>
+                                <span class="font-bold ${s.planB.insurerPays === 'NT$ 0' ? 'text-rose-600' : 'text-teal-700'}">${s.planB.insurerPays}</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-slate-500">車主自付金額：</span>
+                                <span class="font-bold ${s.planB.clientPays.includes('全額自付') ? 'text-rose-600' : 'text-slate-900'}">${s.planB.clientPays}</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">${s.planB.note}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 險種解析資料
+        const coverageData = {
+            own: [
+                {
+                    code: "代號 05 vs 07",
+                    name: "車體損失保險（乙式 vs. 丙式免自負額）",
+                    amount: "保額 65.7 萬（無自負額）",
+                    premium: "乙式 $16,153 / 丙式 $7,090",
+                    desc: "專門用來修理「我們自己愛車」的保險。乙式涵蓋車碰車、自撞（電線桿/牆壁/護欄）、傾覆；丙式則專注於「車與車之間的碰撞」。兩者在本報價單中皆為「無自負額」。（註：依條款，停放中遭不明車輛刮損且找不到肇事者，乙丙式皆屬不保事項）"
+                },
+                {
+                    code: "代號 96",
+                    name: "車體損失保險 15% 折舊率附加條款",
+                    amount: "依附加條款約定",
+                    premium: "乙式 $1,997 / 丙式 $876",
+                    desc: "當愛車不幸發生無法修復之全損，或維修費用達保額扣除折舊後 3/4 以上（推定全損）時，依保單經過月數對應之賠償率理賠（最高按保額 65.7 萬理賠且免扣自負額），讓全損理賠標準更透明。"
+                }
+            ],
+            third: [
+                {
+                    code: "強制險",
+                    name: "強制汽車責任保險",
+                    amount: "醫療 20 萬 / 失能身故 200 萬",
+                    premium: "$1,019（兩方案皆含）",
+                    desc: "政府規定每台車必保的基礎保障，採「無過失責任」，理賠對方及我方乘客的人身傷亡，但完全不賠車損與財物損失。"
+                },
+                {
+                    code: "代號 31 & 32",
+                    name: "汽車第三人責任保險（體傷＋財損）",
+                    amount: "體傷 300萬/600萬 ｜ 財損 100萬",
+                    premium: "體傷 $1,499 ＋ 財損 $3,632",
+                    desc: "用來彌補強制險不夠賠的對方醫藥費、工作收入損失、精神慰撫金（每人最高 300 萬、每事故 600 萬），以及賠償對方的修車費或撞壞店面/護欄等財物損失（最高 100 萬）。"
+                },
+                {
+                    code: "代號 39",
+                    name: "第三人責任保險超額責任附加條款（經濟型）",
+                    amount: "每意外事故最高 1,000 萬",
+                    premium: "$820（兩方案皆含）",
+                    desc: "【整張保單CP值最高的救命傘】一般第三人責任險的「體傷」與「財損」額度不能共用；超額險在 1,000 萬額度內「不分體傷或財損皆可共用」。無論撞傷多人或追撞千萬超跑，超過第三人保額的部分全由超額險買單！"
+                }
+            ],
+            legal: [
+                {
+                    code: "代號 9B & 9C",
+                    name: "第三人＆乘客責任保險慰問金費用附加條款",
+                    amount: "住院慰問 5,000 元 / 身故 5 萬元",
+                    premium: "$149 ＋ $2（兩方案皆含）",
+                    desc: "事故發生導致對方或車內乘客住院時，實務上包個紅包去醫院探視能大幅緩和情緒、加速和解。這筆慰問金支出可憑單據向保險公司申請理賠。"
+                },
+                {
+                    code: "代號 91",
+                    name: "第三人責任保險附加刑事訴訟律師費用補償",
+                    amount: "每一意外事故最高 10 萬元",
+                    premium: "$395（兩方案皆含）",
+                    desc: "只要車禍造成對方受傷，對方常會以「刑事過失傷害罪」提告以逼迫和解。一旦進入偵查庭或法院訴訟階段，委任專業律師的費用可由保險公司支付，避免車主孤立無援。"
+                }
+            ],
+            passenger: [
+                {
+                    code: "代號 58",
+                    name: "第三人責任保險附加乘客體傷單一保額責任險",
+                    amount: "每一事故最高 1,000 萬元",
+                    premium: "$1,294（兩方案皆含）",
+                    desc: "開車載家人、親友或同事出遊時，若因我方駕駛過失導致車內乘客受傷或身故，在 1,000 萬總額度內提供高額醫療與賠償保障，對親友更有交代。"
+                },
+                {
+                    code: "代號 56 & H2",
+                    name: "駕駛人傷害保險（含單一交通事故）",
+                    amount: "住院日額 2,000 元 / 失能身故 100 萬",
+                    premium: "$279 ＋ $289（兩方案皆含）",
+                    desc: "強制險與一般責任險都不賠「開車的駕駛本人」。透過 56（兩車碰撞）搭配 H2（自撞護欄、打滑等單一事故），完整守護駕駛本人的醫療與失能風險。"
+                }
+            ],
+            rescue: [
+                {
+                    code: "代號 85",
+                    name: "汽車保險交通事故轉乘費用附加條款",
+                    amount: "保險期間累計最高 3 萬元",
+                    premium: "$180（兩方案皆含）",
+                    desc: "在外縣市旅遊或出差發生車禍，愛車進廠維修無法繼續開回家時，車主與車上乘客改搭計程車、高鐵、火車或客運返家的交通費用，皆可實支實付報銷。"
+                },
+                {
+                    code: "代號 93",
+                    name: "汽車保險道路救援費用附加條款",
+                    amount: "保險期間累計最高 3 萬元",
+                    premium: "$200（兩方案皆含）",
+                    desc: "行駛途中發生事故或故障需要拖吊車救援、急修服務（如接電、送油、換備胎）時，高達 3 萬元的額度能涵蓋長距離或國道拖吊費用。"
+                }
+            ]
+        };
+
+        function selectCategory(catKey) {
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.className = "cat-btn px-3 py-3 rounded-xl font-bold text-xs sm:text-sm transition bg-slate-100 text-slate-600 hover:bg-slate-200 flex flex-col sm:flex-row items-center justify-center gap-1.5 cursor-pointer";
+            });
+            const activeBtn = document.getElementById('cat-' + catKey);
+            activeBtn.className = "cat-btn px-3 py-3 rounded-xl font-bold text-xs sm:text-sm transition bg-brand-navy text-white shadow-sm flex flex-col sm:flex-row items-center justify-center gap-1.5 cursor-pointer";
+
+            const container = document.getElementById('coverage-content');
+            container.classList.remove('fade-in');
+            void container.offsetWidth;
+            container.classList.add('fade-in');
+
+            const items = coverageData[catKey];
+            container.innerHTML = items.map(item => `
+                <div class="p-5 rounded-2xl border border-slate-200 bg-slate-50/60 hover:bg-white hover:shadow-sm transition">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2.5">
+                        <div class="flex items-center gap-2.5">
+                            <span class="px-2.5 py-1 rounded-lg bg-brand-navy text-white text-xs font-bold shrink-0">${item.code}</span>
+                            <h4 class="font-bold text-slate-900 text-base sm:text-lg">${item.name}</h4>
+                        </div>
+                        <div class="flex items-center gap-3 text-xs sm:text-sm">
+                            <span class="font-bold text-brand-blue bg-blue-50 px-3 py-1 rounded-lg">${item.amount}</span>
+                            <span class="text-slate-500 font-medium">保費：${item.premium}</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-600 leading-relaxed mt-2">${item.desc}</p>
+                </div>
+            `).join('');
+        }
+
+        // 小測驗邏輯
+        const quizAnswers = { 1: null, 2: null, 3: null };
+
+        function answerQuiz(qNum, choice, btnElement) {
+            quizAnswers[qNum] = choice;
+
+            document.querySelectorAll(`.quiz-q${qNum}`).forEach(btn => {
+                btn.className = `quiz-q${qNum} p-3.5 rounded-xl border border-white/25 bg-white/5 hover:bg-white/15 text-left text-sm transition flex items-center gap-3 cursor-pointer`;
+            });
+            btnElement.className = `quiz-q${qNum} p-3.5 rounded-xl border-2 border-amber-300 bg-white/20 text-left text-sm font-bold transition flex items-center gap-3 shadow-sm cursor-pointer`;
+
+            if (quizAnswers[1] && quizAnswers[2] && quizAnswers[3]) {
+                showQuizResult();
+            }
+        }
+
+        function showQuizResult() {
+            const countB = Object.values(quizAnswers).filter(v => v === 'B').length;
+            const resultDiv = document.getElementById('quiz-result');
+            resultDiv.classList.remove('hidden');
+
+            if (countB >= 2) {
+                resultDiv.innerHTML = `
+                    <div class="bg-white text-slate-800 rounded-2xl p-5 sm:p-6 shadow-md">
+                        <div class="flex items-center gap-2 text-brand-navy font-bold text-xs uppercase tracking-wider mb-1">
+                            <i data-lucide="award" class="w-4 h-4 text-amber-500"></i> 專屬測驗分析結果
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-navy mb-2">最適合您的選擇：【方案一 · 乙式車體險 ($27,908)】</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                            根據您的停車環境與用車習慣，愛車停放在開放空間或遇到行駛中自撞、窄巷擦撞護欄的風險較高。一年多花 <strong>10,184 元</strong>（平均每天不到 28 元），只要發生一次倒車撞柱或花台擦漆，回原廠鈑金烤漆動輒 2～4 萬元，保費立刻就回本了！
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs font-bold">
+                            <span class="px-3 py-1.5 rounded-lg bg-blue-50 text-brand-navy">✓ 涵蓋車對車碰撞</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-blue-50 text-brand-navy">✓ 涵蓋自撞柱子/護欄</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-blue-50 text-brand-navy">✓ 無自負額全額修復</span>
+                        </div>
+                    </div>
+                `;
+            } else {
+                resultDiv.innerHTML = `
+                    <div class="bg-white text-slate-800 rounded-2xl p-5 sm:p-6 shadow-md">
+                        <div class="flex items-center gap-2 text-teal-700 font-bold text-xs uppercase tracking-wider mb-1">
+                            <i data-lucide="award" class="w-4 h-4 text-teal-600"></i> 專屬測驗分析結果
+                        </div>
+                        <h3 class="text-xl font-bold text-teal-800 mb-2">最適合您的選擇：【方案二 · 丙式免自負額 ($17,724)】</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                            您擁有良好的室內停車環境且駕駛經驗豐富，發生自撞或擦撞護欄的機率極低！選擇丙式可以直接為您省下 <strong>10,184 元</strong> 保費，同時在路上與其他車輛發生擦撞時，依然享有<strong>免自負額全額修復</strong>以及<strong>1,000 萬超額責任險</strong>的頂規防護！
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs font-bold">
+                            <span class="px-3 py-1.5 rounded-lg bg-teal-50 text-teal-800">✓ 年省 $10,184 保費</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-teal-50 text-teal-800">✓ 車碰車免自負額全賠</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-teal-50 text-teal-800">✓ 完整 1,000 萬超額防護</span>
+                        </div>
+                    </div>
+                `;
+            }
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html>
