@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>專屬愛車保險規劃建議書 | Corolla Cross Hybrid 尊爵</title>
     <!-- 引入 Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
     <!-- 引入 Google Fonts Noto Sans TC 與 Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- 引入 Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -37,10 +37,10 @@
             scroll-behavior: smooth;
         }
         .fade-in {
-            animation: fadeIn 0.35s ease-out forwards;
+            animation: fadeIn 0.3s ease-out forwards;
         }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
+            from { opacity: 0; transform: translateY(6px); }
             to { opacity: 1; transform: translateY(0); }
         }
         .no-scrollbar::-webkit-scrollbar {
@@ -50,6 +50,12 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+        .chevron-rotate {
+            transition: transform 0.25s ease;
+        }
+        .chevron-rotate.open {
+            transform: rotate(180deg);
+        }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-blue selection:text-white">
@@ -57,10 +63,9 @@
     <!-- 密碼保護遮罩層 -->
     <div id="password-modal" class="fixed inset-0 z-50 bg-slate-900/90 backdrop-blur-md flex items-center justify-center p-4">
         <div class="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 text-center border border-slate-100 fade-in">
-            <!-- 已徹底移除原本突兀的空白方框，直接以專業標題開頭 -->
-            <h1 class="text-2xl font-bold text-slate-900 mb-1">車險規劃建議書</h1>
-            <p class="text-xs font-medium text-brand-blue tracking-wide mb-3">Corolla Cross Hybrid 尊爵版</p>
-            <p class="text-sm text-slate-500 mb-6">本建議書包含專屬保險規劃內容，請輸入密碼以解鎖檢視。</p>
+            <h1 class="text-2xl font-bold text-slate-900 mb-1">專屬車險規劃建議書</h1>
+            <p class="text-sm font-medium text-brand-blue tracking-wide mb-3">Corolla Cross Hybrid 尊爵版</p>
+            <p class="text-base text-slate-500 mb-6">請輸入專屬密碼以解鎖檢視保障內容</p>
             
             <form onsubmit="verifyPassword(event)" class="space-y-4">
                 <div>
@@ -90,274 +95,292 @@
                         <span class="hidden sm:inline-block text-sm font-medium text-slate-600">專屬車險規劃顧問</span>
                     </div>
                 </div>
-                <div class="flex items-center gap-2 sm:gap-4 text-xs sm:text-sm font-medium">
+                <div class="flex items-center gap-1.5 sm:gap-4 text-sm sm:text-base font-medium">
                     <a href="#plan-compare" class="text-slate-600 hover:text-brand-blue px-2 py-1.5 rounded-lg transition">方案比較</a>
                     <a href="#scenario-sim" class="text-slate-600 hover:text-brand-blue px-2 py-1.5 rounded-lg transition">理賠模擬</a>
                     <a href="#coverage-explorer" class="text-slate-600 hover:text-brand-blue px-2 py-1.5 rounded-lg transition">保障解析</a>
-                    <a href="#quick-quiz" class="bg-brand-navy text-white hover:bg-brand-blue px-3.5 py-2 rounded-xl shadow-sm transition">30秒選案</a>
+                    <a href="#quick-quiz" class="bg-brand-navy text-white hover:bg-brand-blue px-3 py-2 rounded-xl shadow-sm transition">30秒選案</a>
                 </div>
             </div>
         </nav>
 
-        <!-- Hero 區塊 -->
+        <!-- Hero 區塊（調整後更俐落的大標題與精簡導讀） -->
         <header class="bg-gradient-to-br from-brand-navy via-[#00467f] to-brand-blue text-white pt-10 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
             <div class="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-white/5 blur-2xl pointer-events-none"></div>
             <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-72 h-72 rounded-full bg-teal-400/10 blur-2xl pointer-events-none"></div>
 
             <div class="max-w-6xl mx-auto relative z-10">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/15 border border-white/20 text-xs sm:text-sm font-medium mb-4">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 border border-white/20 text-sm sm:text-base font-medium mb-4">
                     <i data-lucide="sparkles" class="w-4 h-4 text-amber-300"></i>
-                    <span>專為您的愛車量身訂製保障建議</span>
+                    <span>專屬愛車保障建議書</span>
                 </div>
-                <h1 class="text-2xl sm:text-4xl font-bold tracking-tight mb-3 leading-snug">
-                    2024/12 Corolla Cross Hybrid 尊爵<br class="sm:hidden"> 年度車險規劃比較
+                <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight mb-2 leading-tight">
+                    Corolla Cross Hybrid 尊爵
                 </h1>
-                <p class="text-blue-100 text-sm sm:text-base max-w-2xl mb-8 leading-relaxed">
-                    兩份規劃皆已配置頂規「第三人責任險＋1,000萬超額責任險＋律師費補償」，唯一的差別在於<strong class="text-white underline decoration-amber-400 decoration-2 underline-offset-4">「修自己愛車」的車體險等級（乙式 vs. 丙式）</strong>。透過下方互動工具，帶您一分鐘做出最適合的選擇。
+                <p class="text-xl sm:text-3xl font-medium text-amber-300 mb-4">
+                    年度車險雙方案比較（乙式 vs. 丙式）
+                </p>
+                <p class="text-blue-100 text-base sm:text-lg max-w-2xl mb-8">
+                    兩方案皆含頂規「1,000萬超額＋律師費補償」，唯一差異在<strong class="text-white">車體險等級</strong>。點擊下方卡片即可展開查看細節。
                 </p>
 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
                     <div class="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-4">
-                        <div class="text-blue-200 text-xs mb-1 flex items-center gap-1.5">
+                        <div class="text-blue-200 text-sm mb-1 flex items-center gap-1.5">
                             <i data-lucide="car" class="w-3.5 h-3.5"></i> 承保車型
                         </div>
-                        <div class="font-bold text-sm sm:text-base">Corolla Cross Hybrid</div>
-                        <div class="text-xs text-blue-200 mt-0.5">尊爵版 (1798 c.c.)</div>
+                        <div class="font-bold text-base sm:text-lg">Corolla Cross Hybrid</div>
+                        <div class="text-sm text-blue-200 mt-0.5">尊爵版 (1798 c.c.)</div>
                     </div>
                     <div class="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-4">
-                        <div class="text-blue-200 text-xs mb-1 flex items-center gap-1.5">
+                        <div class="text-blue-200 text-sm mb-1 flex items-center gap-1.5">
                             <i data-lucide="calendar" class="w-3.5 h-3.5"></i> 保險期間
                         </div>
-                        <div class="font-bold text-sm sm:text-base">115/12/20 起</div>
-                        <div class="text-xs text-blue-200 mt-0.5">至 116/12/20 止 (一年期)</div>
+                        <div class="font-bold text-base sm:text-lg">115/12/20 起</div>
+                        <div class="text-sm text-blue-200 mt-0.5">至 116/12/20 止 (一年期)</div>
                     </div>
                     <div class="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-4">
-                        <div class="text-blue-200 text-xs mb-1 flex items-center gap-1.5">
+                        <div class="text-blue-200 text-sm mb-1 flex items-center gap-1.5">
                             <i data-lucide="tag" class="w-3.5 h-3.5"></i> 新車重置價值
                         </div>
-                        <div class="font-bold text-base sm:text-lg">NT$ 909,000</div>
-                        <div class="text-xs text-blue-200 mt-0.5">2024 年 12 月製造</div>
+                        <div class="font-bold text-lg sm:text-xl">NT$ 909,000</div>
+                        <div class="text-sm text-blue-200 mt-0.5">2024 年 12 月製造</div>
                     </div>
                     <div class="bg-white/10 backdrop-blur-sm border border-white/15 rounded-2xl p-4">
-                        <div class="text-blue-200 text-xs mb-1 flex items-center gap-1.5">
+                        <div class="text-blue-200 text-sm mb-1 flex items-center gap-1.5">
                             <i data-lucide="shield" class="w-3.5 h-3.5"></i> 本期車體險保額
                         </div>
-                        <div class="font-bold text-base sm:text-lg text-amber-300">NT$ 657,000</div>
-                        <div class="text-xs text-blue-200 mt-0.5">含 15% 折舊率附加條款</div>
+                        <div class="font-bold text-lg sm:text-xl text-amber-300">NT$ 657,000</div>
+                        <div class="text-sm text-blue-200 mt-0.5">含 15% 折舊率附加條款</div>
                     </div>
                 </div>
             </div>
         </header>
 
-        <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 space-y-14 pb-20">
+        <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 space-y-12 pb-20">
 
-            <!-- 區塊一：互動式方案切換與總覽比較 -->
+            <!-- 區塊一：互動式方案切換與點開查看明細 -->
             <section id="plan-compare" class="bg-white rounded-3xl shadow-md border border-slate-200/80 p-6 sm:p-8">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-100">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-slate-100">
                     <div>
-                        <span class="text-xs font-bold uppercase tracking-wider text-brand-blue bg-brand-light px-2.5 py-1 rounded-md">Step 1 · 方案總覽</span>
-                        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mt-2">兩大規劃方案核心差異比較</h2>
+                        <span class="text-sm font-bold uppercase tracking-wider text-brand-blue bg-brand-light px-2.5 py-1 rounded-md">Step 1 · 方案總覽</span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">兩大方案費用與核心差異</h2>
                     </div>
                     <div class="inline-flex bg-slate-100 p-1.5 rounded-2xl self-start md:self-auto">
-                        <button onclick="setCompareMode('side-by-side')" id="btn-mode-side" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition bg-white text-brand-navy shadow-sm cursor-pointer">
+                        <button type="button" onclick="setCompareMode('side-by-side')" id="btn-mode-side" class="px-4 py-2 rounded-xl text-sm sm:text-base font-bold transition bg-white text-brand-navy shadow-sm cursor-pointer">
                             並排比較
                         </button>
-                        <button onclick="setCompareMode('plan-a')" id="btn-mode-a" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 transition cursor-pointer">
-                            只看方案一 (乙式)
+                        <button type="button" onclick="setCompareMode('plan-a')" id="btn-mode-a" class="px-4 py-2 rounded-xl text-sm sm:text-base font-medium text-slate-600 hover:text-slate-900 transition cursor-pointer">
+                            只看乙式
                         </button>
-                        <button onclick="setCompareMode('plan-b')" id="btn-mode-b" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 transition cursor-pointer">
-                            只看方案二 (丙式)
+                        <button type="button" onclick="setCompareMode('plan-b')" id="btn-mode-b" class="px-4 py-2 rounded-xl text-sm sm:text-base font-medium text-slate-600 hover:text-slate-900 transition cursor-pointer">
+                            只看丙式
                         </button>
                     </div>
                 </div>
 
-                <div class="my-6 bg-amber-50 border border-amber-200/80 rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-                    <div class="flex items-start sm:items-center gap-3">
-                        <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0 mt-0.5 sm:mt-0">
-                            <i data-lucide="scale" class="w-5 h-5"></i>
-                        </div>
-                        <div>
-                            <div class="font-bold text-slate-900 text-sm sm:text-base">
-                                兩方案年繳保費差額：<span class="text-amber-700 text-lg">NT$ 10,184</span>（平均每天約 28 元）
-                            </div>
-                            <p class="text-xs sm:text-sm text-slate-600 mt-0.5">
-                                差額完全來自「車體損失險」的承保範圍不同；其餘賠對方、賠乘客、超額責任與道路救援<strong>100% 相同</strong>。
-                            </p>
-                        </div>
+                <div class="my-5 bg-amber-50 border border-amber-200/80 rounded-2xl p-4 flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+                        <i data-lucide="scale" class="w-5 h-5"></i>
+                    </div>
+                    <div class="text-base text-slate-700">
+                        年繳差額 <strong class="text-amber-700 text-lg">NT$ 10,184</strong>（約 $28/天），僅差在車體險範圍；其餘責任險、超額與救援<strong>完全相同</strong>。
                     </div>
                 </div>
 
                 <div id="plans-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <!-- 方案一：乙式 -->
-                    <div id="card-plan-a" class="rounded-2xl border-2 border-brand-blue bg-gradient-to-b from-brand-light/40 to-white p-6 relative flex flex-col justify-between transition-all">
+                    <div id="card-plan-a" class="rounded-2xl border-2 border-brand-blue bg-gradient-to-b from-brand-light/40 to-white p-6 flex flex-col justify-between transition-all">
                         <div>
                             <div class="flex items-center justify-between gap-2 mb-3">
                                 <span class="px-3 py-1 rounded-full bg-brand-navy text-white text-xs font-bold">方案一 · 全方位守護</span>
-                                <span class="text-xs font-medium text-brand-blue bg-blue-100/80 px-2.5 py-1 rounded-lg">含車對車＋自撞護欄</span>
+                                <span class="text-xs font-bold text-brand-blue bg-blue-100/80 px-2.5 py-1 rounded-lg">無自負額</span>
                             </div>
-                            <h3 class="text-xl font-bold text-slate-900">乙式車體險全防護</h3>
-                            <p class="text-xs sm:text-sm text-slate-600 mt-1">適合路邊停車、新手上路或希望愛車行駛中自撞、擦撞皆有保障的車主</p>
+                            <h3 class="text-2xl font-bold text-slate-900">乙式車體險全防護</h3>
 
-                            <div class="mt-5 p-4 rounded-xl bg-white border border-blue-100 shadow-sm">
+                            <div class="mt-4 p-4 rounded-xl bg-white border border-blue-100 shadow-sm">
                                 <div class="flex items-baseline justify-between">
-                                    <span class="text-sm text-slate-500">一年期總保費</span>
+                                    <span class="text-base text-slate-500">一年期總保費</span>
                                     <div class="text-right">
                                         <span class="text-xs font-bold text-brand-navy">NT$</span>
-                                        <span class="text-3xl font-extrabold text-brand-navy tracking-tight">27,908</span>
+                                        <span class="text-4xl font-extrabold text-brand-navy tracking-tight">27,908</span>
                                     </div>
                                 </div>
-                                <div class="mt-2 pt-2 border-t border-slate-100 flex justify-between text-xs text-slate-500">
+                                <div class="mt-2 pt-2 border-t border-slate-100 flex justify-between text-sm text-slate-500">
                                     <span>強制險：$1,019</span>
-                                    <span>任意險：$26,889（車體險占 $18,150）</span>
+                                    <span>任意險：$26,889</span>
                                 </div>
                             </div>
 
-                            <ul class="mt-6 space-y-3 text-sm">
-                                <li class="flex items-start gap-2.5">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-teal-600 shrink-0 mt-0.5"></i>
-                                    <span><strong>車對車碰撞（無自負額）：</strong>與他車發生擦撞，免自負額全額修復。</span>
-                                </li>
-                                <li class="flex items-start gap-2.5">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-teal-600 shrink-0 mt-0.5"></i>
-                                    <span><strong>自撞與單一事故：</strong>包含自己倒車撞柱、擦撞花台、護欄、翻覆等。</span>
-                                </li>
-                                <li class="flex items-start gap-2.5">
-                                    <i data-lucide="info" class="w-5 h-5 text-amber-600 shrink-0 mt-0.5"></i>
-                                    <span class="text-slate-600"><strong>關於不明刮損：</strong>若停放中遭不明車輛刮損且找不到肇事者，依保單條款第四條屬不保事項。</span>
-                                </li>
-                                <li class="flex items-start gap-2.5">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-blue shrink-0 mt-0.5"></i>
-                                    <span><strong>完整責任與救援網：</strong>1,000萬超額＋300萬/600萬/100萬第三人＋乘客/駕駛險＋道路救援。</span>
-                                </li>
-                            </ul>
-                        </div>
+                            <!-- 精簡標籤重點 -->
+                            <div class="mt-4 flex flex-wrap gap-2 text-sm font-bold">
+                                <span class="px-2.5 py-1.5 rounded-lg bg-teal-50 text-teal-700 border border-teal-200/60">✓ 車對車碰撞</span>
+                                <span class="px-2.5 py-1.5 rounded-lg bg-teal-50 text-teal-700 border border-teal-200/60">✓ 自撞柱子/護欄</span>
+                                <span class="px-2.5 py-1.5 rounded-lg bg-blue-50 text-brand-navy border border-blue-200/60">✓ 1,000萬超額+救援</span>
+                            </div>
 
-                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-                            <span>代號：05 乙式 ＋ 96 15%折舊附加</span>
-                            <span class="font-bold text-brand-blue">無自負額</span>
+                            <!-- 點開展示詳細說明 -->
+                            <button type="button" onclick="togglePlanDetail('a')" class="mt-5 w-full py-2.5 px-4 rounded-xl bg-white border border-slate-200 hover:border-brand-blue text-sm sm:text-base font-bold text-brand-navy flex items-center justify-between transition cursor-pointer">
+                                <span>點開查看保障明細與條款重點</span>
+                                <i data-lucide="chevron-down" id="chevron-plan-a" class="w-4 h-4 chevron-rotate"></i>
+                            </button>
+
+                            <div id="detail-plan-a" class="hidden mt-4 pt-4 border-t border-slate-200/70 fade-in">
+                                <ul class="space-y-3 text-base text-slate-700">
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check-circle-2" class="w-4 h-4 text-teal-600 shrink-0 mt-0.5"></i>
+                                        <span><strong>車對車碰撞（無自負額）：</strong>與他車發生擦撞，免自負額全額修復。</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check-circle-2" class="w-4 h-4 text-teal-600 shrink-0 mt-0.5"></i>
+                                        <span><strong>自撞與單一事故：</strong>包含倒車撞柱、擦撞花台、護欄、翻覆等。</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="info" class="w-4 h-4 text-amber-600 shrink-0 mt-0.5"></i>
+                                        <span class="text-slate-600"><strong>關於不明刮損：</strong>停放中遭不明車輛刮損且找不到肇事者，依南山乙式車體險不保事項約定不予理賠。</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-blue shrink-0 mt-0.5"></i>
+                                        <span><strong>完整責任網：</strong>1,000萬超額＋300萬/600萬/100萬第三人＋乘客/駕駛險＋道路救援（車體險占 $18,150）。</span>
+                                    </li>
+                                </ul>
+                                <div class="mt-3 text-sm text-slate-400">代號：05 乙式 ＋ 96 15%折舊附加</div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- 方案二：丙式 -->
-                    <div id="card-plan-b" class="rounded-2xl border-2 border-teal-600/70 bg-gradient-to-b from-teal-50/40 to-white p-6 relative flex flex-col justify-between transition-all">
+                    <div id="card-plan-b" class="rounded-2xl border-2 border-teal-600/70 bg-gradient-to-b from-teal-50/40 to-white p-6 flex flex-col justify-between transition-all">
                         <div>
                             <div class="flex items-center justify-between gap-2 mb-3">
                                 <span class="px-3 py-1 rounded-full bg-teal-700 text-white text-xs font-bold">方案二 · 精省高 CP 值</span>
-                                <span class="text-xs font-medium text-teal-800 bg-teal-100/80 px-2.5 py-1 rounded-lg">省下 $10,184 保費</span>
+                                <span class="text-xs font-bold text-teal-800 bg-teal-100/80 px-2.5 py-1 rounded-lg">省下 $10,184</span>
                             </div>
-                            <h3 class="text-xl font-bold text-slate-900">丙式免自負額車碰車</h3>
-                            <p class="text-xs sm:text-sm text-slate-600 mt-1">適合有固定室內車位、駕駛技術純熟、注重高性價比的車主</p>
+                            <h3 class="text-2xl font-bold text-slate-900">丙式免自負額車碰車</h3>
 
-                            <div class="mt-5 p-4 rounded-xl bg-white border border-teal-100 shadow-sm">
+                            <div class="mt-4 p-4 rounded-xl bg-white border border-teal-100 shadow-sm">
                                 <div class="flex items-baseline justify-between">
-                                    <span class="text-sm text-slate-500">一年期總保費</span>
+                                    <span class="text-base text-slate-500">一年期總保費</span>
                                     <div class="text-right">
                                         <span class="text-xs font-bold text-teal-700">NT$</span>
-                                        <span class="text-3xl font-extrabold text-teal-700 tracking-tight">17,724</span>
+                                        <span class="text-4xl font-extrabold text-teal-700 tracking-tight">17,724</span>
                                     </div>
                                 </div>
-                                <div class="mt-2 pt-2 border-t border-slate-100 flex justify-between text-xs text-slate-500">
+                                <div class="mt-2 pt-2 border-t border-slate-100 flex justify-between text-sm text-slate-500">
                                     <span>強制險：$1,019</span>
-                                    <span>任意險：$16,705（車體險占 $7,966）</span>
+                                    <span>任意險：$16,705</span>
                                 </div>
                             </div>
 
-                            <ul class="mt-6 space-y-3 text-sm">
-                                <li class="flex items-start gap-2.5">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-teal-600 shrink-0 mt-0.5"></i>
-                                    <span><strong>車對車碰撞（免自負額）：</strong>與他車發生碰撞事故，同樣免自負額全額修復。</span>
-                                </li>
-                                <li class="flex items-start gap-2.5">
-                                    <i data-lucide="x-circle" class="w-5 h-5 text-rose-500 shrink-0 mt-0.5"></i>
-                                    <span class="text-slate-600"><strong>不含自撞護欄/柱子：</strong>非與車輛碰撞之單一事故需自行負擔維修費。</span>
-                                </li>
-                                <li class="flex items-start gap-2.5">
-                                    <i data-lucide="x-circle" class="w-5 h-5 text-rose-500 shrink-0 mt-0.5"></i>
-                                    <span class="text-slate-600"><strong>不含不明車損：</strong>路邊停車被撞但找不到肇事車輛時，丙式不予理賠。</span>
-                                </li>
-                                <li class="flex items-start gap-2.5">
-                                    <i data-lucide="check-circle-2" class="w-5 h-5 text-brand-blue shrink-0 mt-0.5"></i>
-                                    <span><strong>完整責任與救援網：</strong>1,000萬超額＋300萬/600萬/100萬第三人＋乘客/駕駛險＋道路救援。</span>
-                                </li>
-                            </ul>
-                        </div>
+                            <!-- 精簡標籤重點 -->
+                            <div class="mt-4 flex flex-wrap gap-2 text-sm font-bold">
+                                <span class="px-2.5 py-1.5 rounded-lg bg-teal-50 text-teal-700 border border-teal-200/60">✓ 車對車碰撞</span>
+                                <span class="px-2.5 py-1.5 rounded-lg bg-rose-50 text-rose-600 border border-rose-200/60">✗ 不含自撞護欄</span>
+                                <span class="px-2.5 py-1.5 rounded-lg bg-blue-50 text-brand-navy border border-blue-200/60">✓ 1,000萬超額+救援</span>
+                            </div>
 
-                        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-                            <span>代號：07 丙式免自負額 ＋ 96 15%折舊附加</span>
-                            <span class="font-bold text-teal-700">免自負額</span>
+                            <!-- 點開展示詳細說明 -->
+                            <button type="button" onclick="togglePlanDetail('b')" class="mt-5 w-full py-2.5 px-4 rounded-xl bg-white border border-slate-200 hover:border-teal-600 text-sm sm:text-base font-bold text-teal-800 flex items-center justify-between transition cursor-pointer">
+                                <span>點開查看保障明細與條款重點</span>
+                                <i data-lucide="chevron-down" id="chevron-plan-b" class="w-4 h-4 chevron-rotate"></i>
+                            </button>
+
+                            <div id="detail-plan-b" class="hidden mt-4 pt-4 border-t border-slate-200/70 fade-in">
+                                <ul class="space-y-3 text-base text-slate-700">
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check-circle-2" class="w-4 h-4 text-teal-600 shrink-0 mt-0.5"></i>
+                                        <span><strong>車對車碰撞（免自負額）：</strong>與他車發生碰撞事故，同樣免自負額全額修復。</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="x-circle" class="w-4 h-4 text-rose-500 shrink-0 mt-0.5"></i>
+                                        <span class="text-slate-600"><strong>不含自撞護欄/柱子：</strong>非與車輛碰撞之單一事故需自行負擔維修費。</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="x-circle" class="w-4 h-4 text-rose-500 shrink-0 mt-0.5"></i>
+                                        <span class="text-slate-600"><strong>不含不明車損：</strong>路邊停車被撞但找不到肇事車輛時，丙式不予理賠。</span>
+                                    </li>
+                                    <li class="flex items-start gap-2">
+                                        <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-blue shrink-0 mt-0.5"></i>
+                                        <span><strong>完整責任網：</strong>1,000萬超額＋300萬/600萬/100萬第三人＋乘客/駕駛險＋道路救援（車體險占 $7,966）。</span>
+                                    </li>
+                                </ul>
+                                <div class="mt-3 text-sm text-slate-400">代號：07 丙式免自負額 ＋ 96 15%折舊附加</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- 區塊二：實務理賠案例模擬器 -->
+            <!-- 區塊二：實務理賠案例模擬器（精簡數字優先，細節點開看） -->
             <section id="scenario-sim" class="bg-white rounded-3xl shadow-md border border-slate-200/80 p-6 sm:p-8">
-                <div class="mb-6">
-                    <span class="text-xs font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-2.5 py-1 rounded-md">Step 2 · 實務理賠情境模擬</span>
-                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mt-2">遇到真實車禍狀況時，兩個方案怎麼賠？</h2>
-                    <p class="text-sm text-slate-600 mt-1">點選下方 5 種台灣馬路上最常見的事故情境，立即比較理賠結果與車主自付金額：</p>
+                <div class="mb-5">
+                    <span class="text-sm font-bold uppercase tracking-wider text-teal-700 bg-teal-50 px-2.5 py-1 rounded-md">Step 2 · 實務理賠模擬</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">常見車禍狀況，兩方案怎麼賠？</h2>
                 </div>
 
-                <div class="flex overflow-x-auto no-scrollbar gap-2.5 pb-3 mb-6" id="scenario-tabs">
-                    <button onclick="selectScenario(0)" class="scenario-btn active shrink-0 px-4 py-3 rounded-2xl border text-left transition flex items-center gap-2.5 bg-brand-navy text-white border-brand-navy shadow-sm cursor-pointer">
-                        <i data-lucide="parking-square" class="w-4 h-4"></i>
-                        <span class="text-xs sm:text-sm font-bold">案例1：停車場被撞肇逃</span>
-                    </button>
-                    <button onclick="selectScenario(1)" class="scenario-btn shrink-0 px-4 py-3 rounded-2xl border text-left transition flex items-center gap-2.5 bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100 cursor-pointer">
+                <div class="flex overflow-x-auto no-scrollbar gap-2.5 pb-3 mb-5" id="scenario-tabs">
+                    <button type="button" onclick="selectScenario(0)" class="scenario-btn active shrink-0 px-4 py-3 rounded-2xl border text-left transition flex items-center gap-2 bg-brand-navy text-white border-brand-navy shadow-sm cursor-pointer">
                         <i data-lucide="alert-triangle" class="w-4 h-4"></i>
-                        <span class="text-xs sm:text-sm font-bold">案例2：倒車自撞柱子</span>
+                        <span class="text-sm sm:text-base font-bold">1. 倒車自撞柱子</span>
                     </button>
-                    <button onclick="selectScenario(2)" class="scenario-btn shrink-0 px-4 py-3 rounded-2xl border text-left transition flex items-center gap-2.5 bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100 cursor-pointer">
+                    <button type="button" onclick="selectScenario(1)" class="scenario-btn shrink-0 px-4 py-3 rounded-2xl border text-left transition flex items-center gap-2 bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100 cursor-pointer">
                         <i data-lucide="car-front" class="w-4 h-4"></i>
-                        <span class="text-xs sm:text-sm font-bold">案例3：路口與他車擦撞</span>
+                        <span class="text-sm sm:text-base font-bold">2. 路口與他車擦撞</span>
                     </button>
-                    <button onclick="selectScenario(3)" class="scenario-btn shrink-0 px-4 py-3 rounded-2xl border text-left transition flex items-center gap-2.5 bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100 cursor-pointer">
+                    <button type="button" onclick="selectScenario(2)" class="scenario-btn shrink-0 px-4 py-3 rounded-2xl border text-left transition flex items-center gap-2 bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100 cursor-pointer">
                         <i data-lucide="gem" class="w-4 h-4"></i>
-                        <span class="text-xs sm:text-sm font-bold">案例4：追撞名貴超跑</span>
+                        <span class="text-sm sm:text-base font-bold">3. 追撞名貴超跑</span>
                     </button>
-                    <button onclick="selectScenario(4)" class="scenario-btn shrink-0 px-4 py-3 rounded-2xl border text-left transition flex items-center gap-2.5 bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100 cursor-pointer">
+                    <button type="button" onclick="selectScenario(3)" class="scenario-btn shrink-0 px-4 py-3 rounded-2xl border text-left transition flex items-center gap-2 bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100 cursor-pointer">
                         <i data-lucide="heart-pulse" class="w-4 h-4"></i>
-                        <span class="text-xs sm:text-sm font-bold">案例5：對方受傷提告</span>
+                        <span class="text-sm sm:text-base font-bold">4. 對方受傷提告</span>
+                    </button>
+                    <button type="button" onclick="selectScenario(4)" class="scenario-btn shrink-0 px-4 py-3 rounded-2xl border text-left transition flex items-center gap-2 bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100 cursor-pointer">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                        <span class="text-sm sm:text-base font-bold">5. 前擋被石頭砸破</span>
+                    </button>
+                    <button type="button" onclick="selectScenario(5)" class="scenario-btn shrink-0 px-4 py-3 rounded-2xl border text-left transition flex items-center gap-2 bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100 cursor-pointer">
+                        <i data-lucide="parking-square" class="w-4 h-4"></i>
+                        <span class="text-sm sm:text-base font-bold">6. 停車場被撞肇逃</span>
                     </button>
                 </div>
 
-                <div id="scenario-display" class="fade-in bg-slate-50 rounded-2xl border border-slate-200/80 p-5 sm:p-7">
+                <div id="scenario-display" class="fade-in bg-slate-50 rounded-2xl border border-slate-200/80 p-5 sm:p-6">
                     <!-- 由 JavaScript 動態填入 -->
                 </div>
             </section>
 
-            <!-- 區塊三：完整防護網解析 -->
+            <!-- 區塊三：完整防護網解析（改為手風琴點開展示，預設只顯示標題、保額與保費） -->
             <section id="coverage-explorer" class="bg-white rounded-3xl shadow-md border border-slate-200/80 p-6 sm:p-8">
-                <div class="mb-6">
-                    <span class="text-xs font-bold uppercase tracking-wider text-brand-blue bg-brand-light px-2.5 py-1 rounded-md">Step 3 · 保障內容全解析</span>
-                    <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mt-2">這兩份規劃為您建立的「五大完整防護網」</h2>
-                    <p class="text-sm text-slate-600 mt-1">點擊各分類頁籤，查看報價單上每一個險種代碼的實際用途與保障額度：</p>
+                <div class="mb-5">
+                    <span class="text-sm font-bold uppercase tracking-wider text-brand-blue bg-brand-light px-2.5 py-1 rounded-md">Step 3 · 保障內容全解析</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 mt-2">五大保障一覽</h2>
                 </div>
 
-                <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-6" id="coverage-tabs">
-                    <button onclick="selectCategory('own')" id="cat-own" class="cat-btn px-3 py-3 rounded-xl font-bold text-xs sm:text-sm transition bg-brand-navy text-white shadow-sm flex flex-col sm:flex-row items-center justify-center gap-1.5 cursor-pointer">
+                <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-5" id="coverage-tabs">
+                    <button type="button" onclick="selectCategory('own')" id="cat-own" class="cat-btn px-3 py-3 rounded-xl font-bold text-sm sm:text-base transition bg-brand-navy text-white shadow-sm flex flex-col sm:flex-row items-center justify-center gap-1.5 cursor-pointer">
                         <i data-lucide="car" class="w-4 h-4"></i>
                         <span>1. 修自己的車</span>
                     </button>
-                    <button onclick="selectCategory('third')" id="cat-third" class="cat-btn px-3 py-3 rounded-xl font-bold text-xs sm:text-sm transition bg-slate-100 text-slate-600 hover:bg-slate-200 flex flex-col sm:flex-row items-center justify-center gap-1.5 cursor-pointer">
+                    <button type="button" onclick="selectCategory('third')" id="cat-third" class="cat-btn px-3 py-3 rounded-xl font-bold text-sm sm:text-base transition bg-slate-100 text-slate-600 hover:bg-slate-200 flex flex-col sm:flex-row items-center justify-center gap-1.5 cursor-pointer">
                         <i data-lucide="shield-alert" class="w-4 h-4"></i>
-                        <span>2. 賠對方的車與人</span>
+                        <span>2. 賠對方車與人</span>
                     </button>
-                    <button onclick="selectCategory('legal')" id="cat-legal" class="cat-btn px-3 py-3 rounded-xl font-bold text-xs sm:text-sm transition bg-slate-100 text-slate-600 hover:bg-slate-200 flex flex-col sm:flex-row items-center justify-center gap-1.5 cursor-pointer">
+                    <button type="button" onclick="selectCategory('legal')" id="cat-legal" class="cat-btn px-3 py-3 rounded-xl font-bold text-sm sm:text-base transition bg-slate-100 text-slate-600 hover:bg-slate-200 flex flex-col sm:flex-row items-center justify-center gap-1.5 cursor-pointer">
                         <i data-lucide="gavel" class="w-4 h-4"></i>
-                        <span>3. 糾紛處理神隊友</span>
+                        <span>3. 糾紛與律師</span>
                     </button>
-                    <button onclick="selectCategory('passenger')" id="cat-passenger" class="cat-btn px-3 py-3 rounded-xl font-bold text-xs sm:text-sm transition bg-slate-100 text-slate-600 hover:bg-slate-200 flex flex-col sm:flex-row items-center justify-center gap-1.5 cursor-pointer">
+                    <button type="button" onclick="selectCategory('passenger')" id="cat-passenger" class="cat-btn px-3 py-3 rounded-xl font-bold text-sm sm:text-base transition bg-slate-100 text-slate-600 hover:bg-slate-200 flex flex-col sm:flex-row items-center justify-center gap-1.5 cursor-pointer">
                         <i data-lucide="users" class="w-4 h-4"></i>
                         <span>4. 照顧車內自己人</span>
                     </button>
-                    <button onclick="selectCategory('rescue')" id="cat-rescue" class="cat-btn col-span-2 sm:col-span-1 px-3 py-3 rounded-xl font-bold text-xs sm:text-sm transition bg-slate-100 text-slate-600 hover:bg-slate-200 flex flex-col sm:flex-row items-center justify-center gap-1.5 cursor-pointer">
+                    <button type="button" onclick="selectCategory('rescue')" id="cat-rescue" class="cat-btn col-span-2 sm:col-span-1 px-3 py-3 rounded-xl font-bold text-sm sm:text-base transition bg-slate-100 text-slate-600 hover:bg-slate-200 flex flex-col sm:flex-row items-center justify-center gap-1.5 cursor-pointer">
                         <i data-lucide="truck" class="w-4 h-4"></i>
                         <span>5. 行車救援支援</span>
                     </button>
                 </div>
 
-                <div id="coverage-content" class="fade-in space-y-4">
+                <div id="coverage-content" class="fade-in space-y-3">
                     <!-- 由 JavaScript 動態填入 -->
                 </div>
             </section>
@@ -365,53 +388,52 @@
             <!-- 區塊四：30 秒選案小測驗 -->
             <section id="quick-quiz" class="bg-gradient-to-br from-brand-navy to-[#004b87] text-white rounded-3xl shadow-lg p-6 sm:p-10">
                 <div class="max-w-3xl mx-auto">
-                    <div class="text-center mb-8">
+                    <div class="text-center mb-7">
                         <span class="inline-block px-3 py-1 rounded-full bg-white/15 text-amber-300 text-xs font-bold tracking-wider mb-2">
                             Step 4 · 30 秒自我評估
                         </span>
-                        <h2 class="text-2xl sm:text-3xl font-bold">還是猶豫該選乙式還是丙式？</h2>
-                        <p class="text-blue-100 text-sm sm:text-base mt-2">回答以下 3 個日常用車問題，系統立即為您分析最適合的投保方案！</p>
+                        <h2 class="text-2xl sm:text-3xl font-bold">乙式還是丙式？點選 3 題立即推薦</h2>
                     </div>
 
-                    <div class="space-y-6 bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-5 sm:p-7">
+                    <div class="space-y-5 bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-5 sm:p-7">
                         <div>
-                            <label class="block font-bold text-sm sm:text-base mb-3">1. 平常愛車主要停放在哪裡？</label>
+                            <label class="block font-bold text-base sm:text-lg mb-2.5">1. 平常愛車主要停放在哪裡？</label>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                <button type="button" onclick="answerQuiz(1, 'A', this)" class="quiz-q1 p-3.5 rounded-xl border border-white/25 bg-white/5 hover:bg-white/15 text-left text-sm transition flex items-center gap-3 cursor-pointer">
+                                <button type="button" onclick="answerQuiz(1, 'A', this)" class="quiz-q1 p-3.5 rounded-xl border border-white/25 bg-white/5 hover:bg-white/15 text-left text-base transition flex items-center gap-3 cursor-pointer">
                                     <span class="w-6 h-6 rounded-full border border-white/40 flex items-center justify-center text-xs font-bold shrink-0">A</span>
-                                    <span>住家與公司都有室內固定車位，少停路邊</span>
+                                    <span>室內固定車位，少停路邊</span>
                                 </button>
-                                <button type="button" onclick="answerQuiz(1, 'B', this)" class="quiz-q1 p-3.5 rounded-xl border border-white/25 bg-white/5 hover:bg-white/15 text-left text-sm transition flex items-center gap-3 cursor-pointer">
+                                <button type="button" onclick="answerQuiz(1, 'B', this)" class="quiz-q1 p-3.5 rounded-xl border border-white/25 bg-white/5 hover:bg-white/15 text-left text-base transition flex items-center gap-3 cursor-pointer">
                                     <span class="w-6 h-6 rounded-full border border-white/40 flex items-center justify-center text-xs font-bold shrink-0">B</span>
-                                    <span>常停路邊停車格、無管理員或開放式停車場</span>
+                                    <span>常停路邊或開放式停車場</span>
                                 </button>
                             </div>
                         </div>
 
                         <div>
-                            <label class="block font-bold text-sm sm:text-base mb-3">2. 駕駛人的開車習慣與用車成員？</label>
+                            <label class="block font-bold text-base sm:text-lg mb-2.5">2. 駕駛人的開車習慣與用車成員？</label>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                <button type="button" onclick="answerQuiz(2, 'A', this)" class="quiz-q2 p-3.5 rounded-xl border border-white/25 bg-white/5 hover:bg-white/15 text-left text-sm transition flex items-center gap-3 cursor-pointer">
+                                <button type="button" onclick="answerQuiz(2, 'A', this)" class="quiz-q2 p-3.5 rounded-xl border border-white/25 bg-white/5 hover:bg-white/15 text-left text-base transition flex items-center gap-3 cursor-pointer">
                                     <span class="w-6 h-6 rounded-full border border-white/40 flex items-center justify-center text-xs font-bold shrink-0">A</span>
-                                    <span>駕駛經驗豐富、路線固定，極少發生自己擦撞</span>
+                                    <span>駕駛經驗豐富、路線固定</span>
                                 </button>
-                                <button type="button" onclick="answerQuiz(2, 'B', this)" class="quiz-q2 p-3.5 rounded-xl border border-white/25 bg-white/5 hover:bg-white/15 text-left text-sm transition flex items-center gap-3 cursor-pointer">
+                                <button type="button" onclick="answerQuiz(2, 'B', this)" class="quiz-q2 p-3.5 rounded-xl border border-white/25 bg-white/5 hover:bg-white/15 text-left text-base transition flex items-center gap-3 cursor-pointer">
                                     <span class="w-6 h-6 rounded-full border border-white/40 flex items-center justify-center text-xs font-bold shrink-0">B</span>
-                                    <span>常開陌生路段、窄巷會車，或家人輪流開這台車</span>
+                                    <span>常走窄巷、陌生路段或家人共用</span>
                                 </button>
                             </div>
                         </div>
 
                         <div>
-                            <label class="block font-bold text-sm sm:text-base mb-3">3. 對於保費預算與風險承擔的偏好？</label>
+                            <label class="block font-bold text-base sm:text-lg mb-2.5">3. 對於保費預算與風險承擔的偏好？</label>
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                <button type="button" onclick="answerQuiz(3, 'A', this)" class="quiz-q3 p-3.5 rounded-xl border border-white/25 bg-white/5 hover:bg-white/15 text-left text-sm transition flex items-center gap-3 cursor-pointer">
+                                <button type="button" onclick="answerQuiz(3, 'A', this)" class="quiz-q3 p-3.5 rounded-xl border border-white/25 bg-white/5 hover:bg-white/15 text-left text-base transition flex items-center gap-3 cursor-pointer">
                                     <span class="w-6 h-6 rounded-full border border-white/40 flex items-center justify-center text-xs font-bold shrink-0">A</span>
-                                    <span>想把 $10,184 省下來，小擦傷自己處理即可</span>
+                                    <span>想省下 $10,184，小擦傷自行處理</span>
                                 </button>
-                                <button type="button" onclick="answerQuiz(3, 'B', this)" class="quiz-q3 p-3.5 rounded-xl border border-white/25 bg-white/5 hover:bg-white/15 text-left text-sm transition flex items-center gap-3 cursor-pointer">
+                                <button type="button" onclick="answerQuiz(3, 'B', this)" class="quiz-q3 p-3.5 rounded-xl border border-white/25 bg-white/5 hover:bg-white/15 text-left text-base transition flex items-center gap-3 cursor-pointer">
                                     <span class="w-6 h-6 rounded-full border border-white/40 flex items-center justify-center text-xs font-bold shrink-0">B</span>
-                                    <span>每天多花約 28 元買心安，不希望任何自撞修車費破費</span>
+                                    <span>每天多 $28 買安心，自撞也有賠</span>
                                 </button>
                             </div>
                         </div>
@@ -425,7 +447,7 @@
 
         </main>
 
-        <footer class="bg-slate-900 text-slate-400 py-10 px-4 sm:px-6 lg:px-8 text-xs sm:text-sm">
+        <footer class="bg-slate-900 text-slate-400 py-10 px-4 sm:px-6 lg:px-8 text-sm sm:text-base">
             <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
                 <div>
                     <p class="text-white font-bold text-base mb-1">南山產物汽車保險專屬規劃說明</p>
@@ -442,8 +464,8 @@
     <script>
         lucide.createIcons();
 
-        // 密碼驗證邏輯（請在此修改您的解鎖密碼）
-        const CORRECT_PASSWORD = "1234"; 
+        // 密碼驗證邏輯（已更新為 2752）
+        const CORRECT_PASSWORD = "2752";
 
         function verifyPassword(event) {
             event.preventDefault();
@@ -479,60 +501,52 @@
             const cardB = document.getElementById('card-plan-b');
 
             [btnSide, btnA, btnB].forEach(btn => {
-                btn.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-slate-600 hover:text-slate-900 transition";
+                btn.className = "px-4 py-2 rounded-xl text-sm sm:text-base font-medium text-slate-600 hover:text-slate-900 transition cursor-pointer";
             });
 
             if (mode === 'side-by-side') {
-                btnSide.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition bg-white text-brand-navy shadow-sm";
+                btnSide.className = "px-4 py-2 rounded-xl text-sm sm:text-base font-bold transition bg-white text-brand-navy shadow-sm cursor-pointer";
                 grid.className = "grid grid-cols-1 lg:grid-cols-2 gap-6";
                 cardA.classList.remove('hidden');
                 cardB.classList.remove('hidden');
             } else if (mode === 'plan-a') {
-                btnA.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition bg-white text-brand-navy shadow-sm";
+                btnA.className = "px-4 py-2 rounded-xl text-sm sm:text-base font-bold transition bg-white text-brand-navy shadow-sm cursor-pointer";
                 grid.className = "grid grid-cols-1 max-w-2xl mx-auto gap-6";
                 cardA.classList.remove('hidden');
                 cardB.classList.add('hidden');
             } else if (mode === 'plan-b') {
-                btnB.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition bg-white text-teal-700 shadow-sm";
+                btnB.className = "px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition bg-white text-teal-700 shadow-sm cursor-pointer";
                 grid.className = "grid grid-cols-1 max-w-2xl mx-auto gap-6";
                 cardA.classList.add('hidden');
                 cardB.classList.remove('hidden');
             }
         }
 
-        // 理賠模擬案例資料（對應真實條款）
+        // 方案明細點開/收合
+        function togglePlanDetail(plan) {
+            const detailEl = document.getElementById('detail-plan-' + plan);
+            const chevronEl = document.getElementById('chevron-plan-' + plan);
+            detailEl.classList.toggle('hidden');
+            chevronEl.classList.toggle('open');
+        }
+
+        // 理賠模擬案例資料（含實際花費明細與各險種給付對照；停車場案例移至最後）
         const scenarios = [
             {
-                title: "案例 1：賣場或路邊停車遭不明車輛刮撞（肇事逃逸）",
-                badge: "依保單條款：乙、丙式皆屬不保事項",
-                badgeColor: "bg-rose-100 text-rose-800",
-                story: "週末去大賣場購物，取車時發現後保桿與葉子板被撞凹一大塊，但周邊監視器剛好死角拍不到車牌，找不到肇事車主。回原廠估價烤漆加鈑金維修費為 40,000 元。",
-                repairCost: "NT$ 40,000",
-                planA: {
-                    status: "不予理賠（依保單條款第四條）",
-                    statusClass: "bg-rose-100 text-rose-800",
-                    insurerPays: "NT$ 0",
-                    clientPays: "NT$ 40,000（全額自付）",
-                    note: "注意：依南山車體險條款，停放中遭不明車輛碰撞或刮損且無法確認對象者，屬不保事項。乙式與丙式在此情況下皆不賠。"
-                },
-                planB: {
-                    status: "不予理賠",
-                    statusClass: "bg-rose-100 text-rose-800",
-                    insurerPays: "NT$ 0",
-                    clientPays: "NT$ 40,000（全額自付）",
-                    note: "丙式僅承保「車對車碰撞」，停放中遭不明刮損或找不到對方車主時，同樣不予理賠。"
-                }
-            },
-            {
-                title: "案例 2：地下室倒車不慎自撞柱子或擦撞護欄",
+                title: "案例 1：地下室倒車不慎自撞柱子或擦撞護欄",
                 badge: "乙式車體險核心優勢",
                 badgeColor: "bg-amber-100 text-amber-800",
-                story: "在狹窄的地下停車場轉彎時視線死角，右側車門不慎擦撞到水泥柱，導致車門嚴重變形需更換門板與烤漆，原廠維修費用為 50,000 元。",
+                story: "在狹窄的地下停車場轉彎時視線死角，右側車門不慎擦撞到水泥柱，導致車門嚴重變形需更換門板與烤漆。",
                 repairCost: "NT$ 50,000",
+                costBreakdown: [
+                    { item: "原廠右後車門板更換", amount: "NT$ 28,000" },
+                    { item: "鈑金與局部烤漆工資", amount: "NT$ 16,000" },
+                    { item: "門邊飾條與拆裝工資", amount: "NT$ 6,000" }
+                ],
                 planA: {
                     status: "全額理賠",
                     statusClass: "bg-teal-100 text-teal-800",
-                    insurerPays: "NT$ 50,000",
+                    insurerPays: "NT$ 50,000（乙式車體險全賠）",
                     clientPays: "NT$ 0（無自負額）",
                     note: "乙式包含「碰撞、傾覆」等單一事故，自己不小心撞到牆壁、柱子或護欄，皆由保險公司買單。"
                 },
@@ -545,66 +559,131 @@
                 }
             },
             {
-                title: "案例 3：市區路口變換車道與他車發生擦撞",
+                title: "案例 2：市區路口變換車道與他車發生擦撞",
                 badge: "兩方案皆有保障",
                 badgeColor: "bg-blue-100 text-brand-navy",
-                story: "在市區路口變換車道時與旁車發生碰撞（假設我方肇責 70%、對方 30%），我方愛車維修費 60,000 元，對方車輛維修費 30,000 元。",
-                repairCost: "我方 6 萬 / 對方 3 萬",
+                story: "在市區路口變換車道時與旁車發生碰撞（假設我方肇責 70%、對方 30%），雙方車輛皆須進廠維修。",
+                repairCost: "共 NT$ 81,000（我方 6 萬＋賠對方 2.1 萬）",
+                costBreakdown: [
+                    { item: "我方愛車維修（前保桿、葉子板、頭燈）", amount: "NT$ 60,000" },
+                    { item: "對方修車費 NT$ 30,000 × 我方 70% 肇責", amount: "NT$ 21,000" }
+                ],
                 planA: {
                     status: "全額修復＋代位求償",
                     statusClass: "bg-teal-100 text-teal-800",
-                    insurerPays: "我方 6 萬全修 ＋ 賠對方 2.1 萬",
+                    insurerPays: "NT$ 81,000（乙式 6 萬＋財損 2.1 萬）",
                     clientPays: "NT$ 0",
-                    note: "乙式先幫您把車修好（再向對方保險公司追償 30% 肇責）；對方修車費由我方第三人財損險依肇責賠付。"
+                    note: "乙式先幫您把 6 萬元車損修好（再向對方保險公司追償 30% 肇責）；對方應賠之 2.1 萬元由我方第三人財損險全數賠付。"
                 },
                 planB: {
                     status: "全額修復＋代位求償",
                     statusClass: "bg-teal-100 text-teal-800",
-                    insurerPays: "我方 6 萬全修 ＋ 賠對方 2.1 萬",
+                    insurerPays: "NT$ 81,000（丙式 6 萬＋財損 2.1 萬）",
                     clientPays: "NT$ 0",
                     note: "因為是明確的「車對車碰撞」，丙式免自負額與乙式享有完全相同的理賠與代位求償服務！"
                 }
             },
             {
-                title: "案例 4：高速公路未保持安全距離，追撞名貴超跑",
+                title: "案例 3：高速公路未保持安全距離，追撞名貴超跑",
                 badge: "超額責任險神救援",
                 badgeColor: "bg-purple-100 text-purple-800",
-                story: "雨天視線不佳，不慎追撞前方進口名貴超跑，經原廠鑑定對方車尾碳纖維套件與排氣系統受損，判賠修車費高達 205 萬元！",
-                repairCost: "對方求償 NT$ 2,050,000",
+                story: "雨天視線不佳追撞前方進口超跑，對方車尾碳纖維套件與排氣系統受損，原廠鑑定求償 205 萬元。",
+                repairCost: "NT$ 2,050,000",
+                costBreakdown: [
+                    { item: "對方後碳纖維下擾流與保桿總成", amount: "NT$ 1,250,000" },
+                    { item: "排氣系統與感測雷達更換校正", amount: "NT$ 550,000" },
+                    { item: "原廠拆裝工資與烤漆", amount: "NT$ 250,000" }
+                ],
                 planA: {
-                    status: "1,000萬超額險全數買單",
+                    status: "1,000萬超額險買單",
                     statusClass: "bg-teal-100 text-teal-800",
-                    insurerPays: "財損 100萬 ＋ 超額險 105萬",
-                    clientPays: "NT$ 0（守住家庭資產）",
-                    note: "先用「第三人財損 100 萬」理賠，不足的 105 萬立刻啟動「超額責任險（保額 1,000 萬）」全額補足！"
+                    insurerPays: "NT$ 2,050,000（財損 100 萬＋超額 105 萬）",
+                    clientPays: "NT$ 0（守住資產）",
+                    note: "先用「代號 32 第三人財損 100 萬」賠付，不足的 105 萬立刻由「代號 39 超額責任險（保額 1,000 萬）」全額補足！"
                 },
                 planB: {
-                    status: "1,000萬超額險全數買單",
+                    status: "1,000萬超額險買單",
                     statusClass: "bg-teal-100 text-teal-800",
-                    insurerPays: "財損 100萬 ＋ 超額險 105萬",
-                    clientPays: "NT$ 0（守住家庭資產）",
+                    insurerPays: "NT$ 2,050,000（財損 100 萬＋超額 105 萬）",
+                    clientPays: "NT$ 0（守住資產）",
                     note: "方案二同樣具備 1,000 萬超額責任險！若沒保超額險，車主需自己拿 105 萬現金出來賠。"
                 }
             },
             {
-                title: "案例 5：車禍導致對方騎士骨折住院，並提告過失傷害",
+                title: "案例 4：車禍導致對方騎士骨折住院，並提告過失傷害",
                 badge: "律師費＋慰問金全支援",
                 badgeColor: "bg-indigo-100 text-indigo-800",
-                story: "轉彎時不慎與機車發生擦撞，對方騎士腿部骨折住院 5 天，要求賠償醫藥費、薪資損失及精神慰撫金共 65 萬元，且因和解前先行提告「刑事過失傷害」。",
-                repairCost: "體傷求償 65 萬 ＋ 訴訟風險",
+                story: "轉彎時不慎與機車擦撞，對方騎士骨折住院 5 天並先提告刑事過失傷害，產生醫療、和解賠償、探病紅包與律師委任費用。",
+                repairCost: "NT$ 735,000",
+                costBreakdown: [
+                    { item: "對方手術自費醫材與住院醫療費", amount: "NT$ 150,000" },
+                    { item: "對方薪資損失與精神慰撫金和解", amount: "NT$ 500,000" },
+                    { item: "醫院探視慰問紅包", amount: "NT$ 5,000" },
+                    { item: "委任刑事辯護律師費（偵查＋一審）", amount: "NT$ 80,000" }
+                ],
                 planA: {
                     status: "全方位理賠與訴訟支援",
                     statusClass: "bg-teal-100 text-teal-800",
-                    insurerPays: "強制險＋第三人體傷＋慰問金＋律師費",
+                    insurerPays: "NT$ 735,000（強制 15 萬＋第三人 50 萬＋慰問 5 千＋律師 8 萬）",
                     clientPays: "NT$ 0",
-                    note: "①強制險與第三人體傷險賠付 65 萬；②啟動「代碼 9B 慰問金」補助探病紅包 5,000 元；③啟動「代碼 91」支付最高 10 萬刑事律師費。"
+                    note: "兩方案在此部分保障完全相同：①強制險賠醫療 15 萬；②第三人體傷賠 50 萬；③代號 9B 慰問金賠 5,000 元；④代號 91 刑事律師費賠 8 萬（限單純過失傷害等，不含肇事遺棄，須附傳票/起訴書與收據正本）。"
                 },
                 planB: {
                     status: "全方位理賠與訴訟支援",
                     statusClass: "bg-teal-100 text-teal-800",
-                    insurerPays: "強制險＋第三人體傷＋慰問金＋律師費",
+                    insurerPays: "NT$ 735,000（強制 15 萬＋第三人 50 萬＋慰問 5 千＋律師 8 萬）",
                     clientPays: "NT$ 0",
                     note: "兩方案在責任險、慰問金與刑事律師費補償上完全相同，讓您在面對訴訟壓力時有專業後盾。"
+                }
+            },
+            {
+                title: "案例 5：國道行駛中，前擋風玻璃被跳石砸破",
+                badge: "乙式「拋擲物或墜落物」專屬優勢",
+                badgeColor: "bg-amber-100 text-amber-800",
+                story: "在高速公路正常行駛時，遭前方或對向飛來的碎石砸中前擋風玻璃，玻璃裂開須回原廠整片更換並校正鏡頭。",
+                repairCost: "NT$ 15,000",
+                costBreakdown: [
+                    { item: "原廠前擋風玻璃與飾條膠合材料", amount: "NT$ 9,500" },
+                    { item: "拆裝工資與 TSS 輔助鏡頭校正", amount: "NT$ 5,500" }
+                ],
+                planA: {
+                    status: "全額理賠",
+                    statusClass: "bg-teal-100 text-teal-800",
+                    insurerPays: "NT$ 15,000（乙式車體險全賠）",
+                    clientPays: "NT$ 0（無自負額）",
+                    note: "乙式承保「拋擲物或墜落物」，且更換原廠零件不計折舊。（貼心提醒：非原廠標配之自費隔熱紙若未另行加保，不在理賠範圍內）"
+                },
+                planB: {
+                    status: "不予理賠",
+                    statusClass: "bg-rose-100 text-rose-800",
+                    insurerPays: "NT$ 0",
+                    clientPays: "NT$ 15,000（全額自付）",
+                    note: "丙式僅承保「與車輛發生直接碰撞或擦撞」，行駛中被石頭砸破玻璃屬於非車碰車事故，丙式不予理賠（須另加保車窗玻璃險才有保障）。"
+                }
+            },
+            {
+                title: "案例 6：賣場或路邊停車遭不明車輛刮撞（肇事逃逸）",
+                badge: "依保單條款：乙、丙式皆屬不保事項",
+                badgeColor: "bg-rose-100 text-rose-800",
+                story: "週末去大賣場購物，取車時發現後保桿與葉子板被撞凹一大塊，但監視器死角拍不到車牌，找不到肇事車主。",
+                repairCost: "NT$ 40,000",
+                costBreakdown: [
+                    { item: "原廠後保桿更換與烤漆", amount: "NT$ 18,000" },
+                    { item: "後葉子板鈑金修復與烤漆", amount: "NT$ 22,000" }
+                ],
+                planA: {
+                    status: "不予理賠",
+                    statusClass: "bg-rose-100 text-rose-800",
+                    insurerPays: "NT$ 0",
+                    clientPays: "NT$ 40,000（全額自付）",
+                    note: "依南山乙式車體險不保事項約定，停放中遭不明車輛碰撞或刮損且無法確認對象者，屬不保事項。乙式與丙式在此情況下皆不賠。"
+                },
+                planB: {
+                    status: "不予理賠",
+                    statusClass: "bg-rose-100 text-rose-800",
+                    insurerPays: "NT$ 0",
+                    clientPays: "NT$ 40,000（全額自付）",
+                    note: "丙式僅承保「車對車碰撞」，停放中遭不明刮損或找不到對方車主時，同樣不予理賠。"
                 }
             }
         ];
@@ -613,9 +692,9 @@
             const btns = document.querySelectorAll('.scenario-btn');
             btns.forEach((btn, i) => {
                 if (i === index) {
-                    btn.className = "scenario-btn active shrink-0 px-4 py-3 rounded-2xl border text-left transition flex items-center gap-2.5 bg-brand-navy text-white border-brand-navy shadow-sm cursor-pointer";
+                    btn.className = "scenario-btn active shrink-0 px-4 py-3 rounded-2xl border text-left transition flex items-center gap-2 bg-brand-navy text-white border-brand-navy shadow-sm cursor-pointer";
                 } else {
-                    btn.className = "scenario-btn shrink-0 px-4 py-3 rounded-2xl border text-left transition flex items-center gap-2.5 bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100 cursor-pointer";
+                    btn.className = "scenario-btn shrink-0 px-4 py-3 rounded-2xl border text-left transition flex items-center gap-2 bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100 cursor-pointer";
                 }
             });
 
@@ -625,54 +704,97 @@
             void display.offsetWidth;
             display.classList.add('fade-in');
 
-            display.innerHTML = `
-                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
-                    <span class="px-3 py-1 rounded-full text-xs font-bold ${s.badgeColor}">${s.badge}</span>
-                    <span class="text-xs sm:text-sm font-bold text-slate-500">事故損失規模：<strong class="text-slate-800">${s.repairCost}</strong></span>
+            const breakdownRows = s.costBreakdown.map(row => `
+                <div class="flex justify-between items-center text-sm sm:text-base py-1.5 border-b border-slate-100 last:border-none">
+                    <span class="text-slate-600">${row.item}</span>
+                    <span class="font-bold text-slate-800 shrink-0 ml-3">${row.amount}</span>
                 </div>
-                <h3 class="text-lg sm:text-xl font-bold text-slate-900 mb-2">${s.title}</h3>
-                <p class="text-sm text-slate-600 leading-relaxed bg-white p-4 rounded-xl border border-slate-200/70 mb-6">
-                    <strong class="text-brand-navy">情境描述：</strong>${s.story}
-                </p>
+            `).join('');
 
+            display.innerHTML = `
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+                    <span class="px-3 py-1 rounded-full text-sm font-bold ${s.badgeColor}">${s.badge}</span>
+                </div>
+                <h3 class="text-xl sm:text-2xl font-bold text-slate-900 mb-4">${s.title}</h3>
+
+                <!-- 實際花費明細卡片 -->
+                <div class="bg-white rounded-xl border border-slate-200 p-4 sm:p-5 mb-4 shadow-sm">
+                    <div class="flex items-center justify-between pb-2 mb-2 border-b border-slate-200">
+                        <span class="text-sm sm:text-base font-bold text-brand-navy flex items-center gap-1.5">
+                            <i data-lucide="receipt" class="w-4 h-4"></i> 實際花費明細（估算範例）
+                        </span>
+                        <span class="text-sm sm:text-base font-extrabold text-slate-900">合計：${s.repairCost}</span>
+                    </div>
+                    <div>${breakdownRows}</div>
+                </div>
+
+                <!-- 兩方案理賠對照 -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="bg-white rounded-xl border-2 border-brand-blue/30 p-5 shadow-sm">
+                    <div class="bg-white rounded-xl border-2 border-brand-blue/30 p-4 sm:p-5 shadow-sm">
                         <div class="flex items-center justify-between mb-3">
-                            <span class="font-bold text-brand-navy text-sm sm:text-base">方案一：乙式車體險 ($27,908)</span>
-                            <span class="px-2.5 py-1 rounded-lg text-xs font-bold ${s.planA.statusClass}">${s.planA.status}</span>
+                            <span class="font-bold text-brand-navy text-base sm:text-lg">方案一：乙式 ($27,908)</span>
+                            <span class="px-2.5 py-1 rounded-lg text-sm font-bold ${s.planA.statusClass}">${s.planA.status}</span>
                         </div>
-                        <div class="space-y-2 text-sm border-y border-slate-100 py-3 my-3">
-                            <div class="flex justify-between">
-                                <span class="text-slate-500">保險公司理賠：</span>
-                                <span class="font-bold ${s.planA.insurerPays === 'NT$ 0' ? 'text-rose-600' : 'text-teal-700'}">${s.planA.insurerPays}</span>
+                        <div class="space-y-2.5 text-base border-t border-slate-100 pt-3">
+                            <div class="flex flex-col sm:flex-row sm:justify-between gap-1">
+                                <span class="text-slate-500 shrink-0">保險理賠給付：</span>
+                                <span class="font-bold sm:text-right ${s.planA.insurerPays === 'NT$ 0' ? 'text-rose-600' : 'text-teal-700'}">${s.planA.insurerPays}</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-slate-500">車主自付金額：</span>
                                 <span class="font-bold ${s.planA.clientPays.includes('全額自付') ? 'text-rose-600' : 'text-slate-900'}">${s.planA.clientPays}</span>
                             </div>
                         </div>
-                        <p class="text-xs text-slate-600 leading-relaxed">${s.planA.note}</p>
                     </div>
 
-                    <div class="bg-white rounded-xl border-2 border-teal-600/30 p-5 shadow-sm">
+                    <div class="bg-white rounded-xl border-2 border-teal-600/30 p-4 sm:p-5 shadow-sm">
                         <div class="flex items-center justify-between mb-3">
-                            <span class="font-bold text-teal-800 text-sm sm:text-base">方案二：丙式免自負額 ($17,724)</span>
-                            <span class="px-2.5 py-1 rounded-lg text-xs font-bold ${s.planB.statusClass}">${s.planB.status}</span>
+                            <span class="font-bold text-teal-800 text-base sm:text-lg">方案二：丙式 ($17,724)</span>
+                            <span class="px-2.5 py-1 rounded-lg text-sm font-bold ${s.planB.statusClass}">${s.planB.status}</span>
                         </div>
-                        <div class="space-y-2 text-sm border-y border-slate-100 py-3 my-3">
-                            <div class="flex justify-between">
-                                <span class="text-slate-500">保險公司理賠：</span>
-                                <span class="font-bold ${s.planB.insurerPays === 'NT$ 0' ? 'text-rose-600' : 'text-teal-700'}">${s.planB.insurerPays}</span>
+                        <div class="space-y-2.5 text-base border-t border-slate-100 pt-3">
+                            <div class="flex flex-col sm:flex-row sm:justify-between gap-1">
+                                <span class="text-slate-500 shrink-0">保險理賠給付：</span>
+                                <span class="font-bold sm:text-right ${s.planB.insurerPays === 'NT$ 0' ? 'text-rose-600' : 'text-teal-700'}">${s.planB.insurerPays}</span>
                             </div>
                             <div class="flex justify-between">
                                 <span class="text-slate-500">車主自付金額：</span>
                                 <span class="font-bold ${s.planB.clientPays.includes('全額自付') ? 'text-rose-600' : 'text-slate-900'}">${s.planB.clientPays}</span>
                             </div>
                         </div>
-                        <p class="text-xs text-slate-600 leading-relaxed">${s.planB.note}</p>
+                    </div>
+                </div>
+
+                <!-- 點開查看情境與理賠說明 -->
+                <button type="button" onclick="toggleScenarioDetail()" class="mt-4 w-full py-2.5 px-4 rounded-xl bg-white border border-slate-200 hover:border-brand-blue text-sm sm:text-base font-bold text-slate-700 flex items-center justify-between transition cursor-pointer">
+                    <span>點開查看事故情境與條款說明</span>
+                    <i data-lucide="chevron-down" id="chevron-scenario" class="w-4 h-4 chevron-rotate"></i>
+                </button>
+
+                <div id="scenario-extra" class="hidden mt-4 space-y-3 fade-in">
+                    <p class="text-base text-slate-600 leading-relaxed bg-white p-4 rounded-xl border border-slate-200/70">
+                        <strong class="text-brand-navy">情境描述：</strong>${s.story}
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-slate-600">
+                        <div class="bg-blue-50/60 p-3.5 rounded-xl border border-blue-100">
+                            <strong class="text-brand-navy block mb-1">乙式說明：</strong>${s.planA.note}
+                        </div>
+                        <div class="bg-teal-50/60 p-3.5 rounded-xl border border-teal-100">
+                            <strong class="text-teal-800 block mb-1">丙式說明：</strong>${s.planB.note}
+                        </div>
                     </div>
                 </div>
             `;
+            lucide.createIcons();
+        }
+
+        function toggleScenarioDetail() {
+            const extra = document.getElementById('scenario-extra');
+            const chevron = document.getElementById('chevron-scenario');
+            if (extra && chevron) {
+                extra.classList.toggle('hidden');
+                chevron.classList.toggle('open');
+            }
         }
 
         // 險種解析資料
@@ -768,10 +890,10 @@
 
         function selectCategory(catKey) {
             document.querySelectorAll('.cat-btn').forEach(btn => {
-                btn.className = "cat-btn px-3 py-3 rounded-xl font-bold text-xs sm:text-sm transition bg-slate-100 text-slate-600 hover:bg-slate-200 flex flex-col sm:flex-row items-center justify-center gap-1.5 cursor-pointer";
+                btn.className = "cat-btn px-3 py-3 rounded-xl font-bold text-sm sm:text-base transition bg-slate-100 text-slate-600 hover:bg-slate-200 flex flex-col sm:flex-row items-center justify-center gap-1.5 cursor-pointer";
             });
             const activeBtn = document.getElementById('cat-' + catKey);
-            activeBtn.className = "cat-btn px-3 py-3 rounded-xl font-bold text-xs sm:text-sm transition bg-brand-navy text-white shadow-sm flex flex-col sm:flex-row items-center justify-center gap-1.5 cursor-pointer";
+            activeBtn.className = "cat-btn px-3 py-3 rounded-xl font-bold text-sm sm:text-base transition bg-brand-navy text-white shadow-sm flex flex-col sm:flex-row items-center justify-center gap-1.5 cursor-pointer";
 
             const container = document.getElementById('coverage-content');
             container.classList.remove('fade-in');
@@ -779,21 +901,38 @@
             container.classList.add('fade-in');
 
             const items = coverageData[catKey];
-            container.innerHTML = items.map(item => `
-                <div class="p-5 rounded-2xl border border-slate-200 bg-slate-50/60 hover:bg-white hover:shadow-sm transition">
-                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2.5">
-                        <div class="flex items-center gap-2.5">
-                            <span class="px-2.5 py-1 rounded-lg bg-brand-navy text-white text-xs font-bold shrink-0">${item.code}</span>
-                            <h4 class="font-bold text-slate-900 text-base sm:text-lg">${item.name}</h4>
+            container.innerHTML = items.map((item, idx) => `
+                <div class="rounded-2xl border border-slate-200 bg-slate-50/60 hover:bg-white hover:shadow-sm transition overflow-hidden">
+                    <button type="button" onclick="toggleCoverageItem('${catKey}', ${idx})" class="w-full p-4 sm:p-5 text-left flex items-center justify-between gap-3 cursor-pointer">
+                        <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 flex-1 min-w-0">
+                            <span class="px-2.5 py-1 rounded-lg bg-brand-navy text-white text-sm font-bold w-fit shrink-0">${item.code}</span>
+                            <h4 class="font-bold text-slate-900 text-base sm:text-lg truncate">${item.name}</h4>
                         </div>
-                        <div class="flex items-center gap-3 text-xs sm:text-sm">
-                            <span class="font-bold text-brand-blue bg-blue-50 px-3 py-1 rounded-lg">${item.amount}</span>
-                            <span class="text-slate-500 font-medium">保費：${item.premium}</span>
+                        <div class="flex items-center gap-2.5 shrink-0">
+                            <span class="hidden md:inline-block font-bold text-brand-blue bg-blue-50 px-3 py-1 rounded-lg text-sm">${item.amount}</span>
+                            <span class="text-sm text-slate-500 font-medium hidden sm:inline-block">${item.premium}</span>
+                            <i data-lucide="chevron-down" id="chevron-cov-${catKey}-${idx}" class="w-4 h-4 text-slate-400 chevron-rotate"></i>
                         </div>
+                    </button>
+                    <div id="cov-desc-${catKey}-${idx}" class="hidden px-4 sm:px-5 pb-4 sm:pb-5 pt-2 border-t border-slate-100 bg-white fade-in">
+                        <div class="flex flex-wrap gap-2 mb-2 md:hidden text-xs">
+                            <span class="font-bold text-brand-blue bg-blue-50 px-2.5 py-1 rounded-lg">${item.amount}</span>
+                            <span class="text-slate-500 font-medium py-1">保費：${item.premium}</span>
+                        </div>
+                        <p class="text-base text-slate-600 leading-relaxed">${item.desc}</p>
                     </div>
-                    <p class="text-sm text-slate-600 leading-relaxed mt-2">${item.desc}</p>
                 </div>
             `).join('');
+            lucide.createIcons();
+        }
+
+        function toggleCoverageItem(catKey, idx) {
+            const descEl = document.getElementById(`cov-desc-${catKey}-${idx}`);
+            const chevronEl = document.getElementById(`chevron-cov-${catKey}-${idx}`);
+            if (descEl && chevronEl) {
+                descEl.classList.toggle('hidden');
+                chevronEl.classList.toggle('open');
+            }
         }
 
         // 小測驗邏輯
@@ -803,9 +942,9 @@
             quizAnswers[qNum] = choice;
 
             document.querySelectorAll(`.quiz-q${qNum}`).forEach(btn => {
-                btn.className = `quiz-q${qNum} p-3.5 rounded-xl border border-white/25 bg-white/5 hover:bg-white/15 text-left text-sm transition flex items-center gap-3 cursor-pointer`;
+                btn.className = `quiz-q${qNum} p-3.5 rounded-xl border border-white/25 bg-white/5 hover:bg-white/15 text-left text-base transition flex items-center gap-3 cursor-pointer`;
             });
-            btnElement.className = `quiz-q${qNum} p-3.5 rounded-xl border-2 border-amber-300 bg-white/20 text-left text-sm font-bold transition flex items-center gap-3 shadow-sm cursor-pointer`;
+            btnElement.className = `quiz-q${qNum} p-3.5 rounded-xl border-2 border-amber-300 bg-white/20 text-left text-base font-bold transition flex items-center gap-3 shadow-sm cursor-pointer`;
 
             if (quizAnswers[1] && quizAnswers[2] && quizAnswers[3]) {
                 showQuizResult();
@@ -823,13 +962,13 @@
                         <div class="flex items-center gap-2 text-brand-navy font-bold text-xs uppercase tracking-wider mb-1">
                             <i data-lucide="award" class="w-4 h-4 text-amber-500"></i> 專屬測驗分析結果
                         </div>
-                        <h3 class="text-xl font-bold text-brand-navy mb-2">最適合您的選擇：【方案一 · 乙式車體險 ($27,908)】</h3>
-                        <p class="text-sm text-slate-600 leading-relaxed mb-4">
-                            根據您的停車環境與用車習慣，愛車停放在開放空間或遇到行駛中自撞、窄巷擦撞護欄的風險較高。一年多花 <strong>10,184 元</strong>（平均每天不到 28 元），只要發生一次倒車撞柱或花台擦漆，回原廠鈑金烤漆動輒 2～4 萬元，保費立刻就回本了！
+                        <h3 class="text-2xl font-bold text-brand-navy mb-2">推薦您選擇：【方案一 · 乙式車體險 ($27,908)】</h3>
+                        <p class="text-base text-slate-600 leading-relaxed mb-4">
+                            每天多花不到 28 元，就能涵蓋自撞柱子、花台與護欄的風險；只要發生一次原廠鈑金烤漆（動輒 2～4 萬元），保費立刻回本！
                         </p>
-                        <div class="flex flex-wrap gap-2 text-xs font-bold">
-                            <span class="px-3 py-1.5 rounded-lg bg-blue-50 text-brand-navy">✓ 涵蓋車對車碰撞</span>
-                            <span class="px-3 py-1.5 rounded-lg bg-blue-50 text-brand-navy">✓ 涵蓋自撞柱子/護欄</span>
+                        <div class="flex flex-wrap gap-2 text-sm font-bold">
+                            <span class="px-3 py-1.5 rounded-lg bg-blue-50 text-brand-navy">✓ 車對車碰撞</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-blue-50 text-brand-navy">✓ 自撞柱子/護欄</span>
                             <span class="px-3 py-1.5 rounded-lg bg-blue-50 text-brand-navy">✓ 無自負額全額修復</span>
                         </div>
                     </div>
@@ -840,14 +979,14 @@
                         <div class="flex items-center gap-2 text-teal-700 font-bold text-xs uppercase tracking-wider mb-1">
                             <i data-lucide="award" class="w-4 h-4 text-teal-600"></i> 專屬測驗分析結果
                         </div>
-                        <h3 class="text-xl font-bold text-teal-800 mb-2">最適合您的選擇：【方案二 · 丙式免自負額 ($17,724)】</h3>
-                        <p class="text-sm text-slate-600 leading-relaxed mb-4">
-                            您擁有良好的室內停車環境且駕駛經驗豐富，發生自撞或擦撞護欄的機率極低！選擇丙式可以直接為您省下 <strong>10,184 元</strong> 保費，同時在路上與其他車輛發生擦撞時，依然享有<strong>免自負額全額修復</strong>以及<strong>1,000 萬超額責任險</strong>的頂規防護！
+                        <h3 class="text-2xl font-bold text-teal-800 mb-2">推薦您選擇：【方案二 · 丙式免自負額 ($17,724)】</h3>
+                        <p class="text-base text-slate-600 leading-relaxed mb-4">
+                            停車環境單純且駕駛經驗豐富，選擇丙式可直接省下 <strong>10,184 元</strong> 保費，同時在路上與他車碰撞時，依然享有免自負額全賠與 1,000 萬超額防護！
                         </p>
-                        <div class="flex flex-wrap gap-2 text-xs font-bold">
-                            <span class="px-3 py-1.5 rounded-lg bg-teal-50 text-teal-800">✓ 年省 $10,184 保費</span>
-                            <span class="px-3 py-1.5 rounded-lg bg-teal-50 text-teal-800">✓ 車碰車免自負額全賠</span>
-                            <span class="px-3 py-1.5 rounded-lg bg-teal-50 text-teal-800">✓ 完整 1,000 萬超額防護</span>
+                        <div class="flex flex-wrap gap-2 text-sm font-bold">
+                            <span class="px-3 py-1.5 rounded-lg bg-teal-50 text-teal-800">✓ 年省 $10,184</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-teal-50 text-teal-800">✓ 車碰車免自負額</span>
+                            <span class="px-3 py-1.5 rounded-lg bg-teal-50 text-teal-800">✓ 1,000 萬超額防護</span>
                         </div>
                     </div>
                 `;
